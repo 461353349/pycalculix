@@ -1,0 +1,979 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycalculix.feamodel module &mdash; pycalculix 0.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pycalculix 0.9.3 documentation" href="index.html" />
+    <link rel="up" title="pycalculix package" href="pycalculix.html" />
+    <link rel="next" title="pycalculix.geometry module" href="pycalculix.geometry.html" />
+    <link rel="prev" title="pycalculix.environment module" href="pycalculix.environment.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.geometry.html" title="pycalculix.geometry module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.environment.html" title="pycalculix.environment module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" accesskey="U">pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pycalculix.feamodel">
+<span id="pycalculix-feamodel-module"></span><h1>pycalculix.feamodel module<a class="headerlink" href="#module-pycalculix.feamodel" title="Permalink to this headline">¶</a></h1>
+<p>This module stores the FeaModel class.</p>
+<p>This class is the highest level object in a pycalculix program.
+It stores all parts, loads, constraints, mesh, problem, and results_file
+objects.</p>
+<dl class="class">
+<dt id="pycalculix.feamodel.FeaModel">
+<em class="property">class </em><tt class="descclassname">pycalculix.feamodel.</tt><tt class="descname">FeaModel</tt><big>(</big><em>model_name</em>, <em>ccx=None</em>, <em>cgx=None</em>, <em>gmsh=None</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Makes a FeaModel instance.</p>
+<p>Parts, area, lines, arcs, points, nodes, elements, faces, models,
+components, and loads are stored in this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model_name</strong> (<em>str</em>) &#8211; project name for this FeaModel, this is a file prefix</li>
+<li><strong>ccx</strong> (<em>None or str</em>) &#8211; path to Calculix ccx solver, pass this when you want
+to overwite the default program location.
+None means the default envionment.CCX is used.</li>
+<li><strong>cgx</strong> (<em>None or str</em>) &#8211; path to Calculix cgx mesher, pass this when you want
+to overwite the default program location.
+None means the default envionment.CGX is used.</li>
+<li><strong>gmsh</strong> (<em>None or str</em>) &#8211; path to gmsh mesher, pass this when you want
+to overwite the default program location.
+None means the default envionment.GMSH is used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.fname">
+<tt class="descname">fname</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.fname" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
+<p>FeaModel project file name prefix</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.points">
+<tt class="descname">points</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.points" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Itemlist</em></p>
+<p>list of all geometry points</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.lines">
+<tt class="descname">lines</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.lines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Itemlist</em></p>
+<p>list of all geometry lines</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.areas">
+<tt class="descname">areas</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.areas" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Itemlist</em></p>
+<p>list of all geometry areas</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.parts">
+<tt class="descname">parts</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.parts" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Itemlist</em></p>
+<p>list of all geometry parts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.matls">
+<tt class="descname">matls</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.matls" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Itemlist</em></p>
+<p>list of all materials</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.components">
+<tt class="descname">components</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.components" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Itemlist</em></p>
+<p>list of all components</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.loads">
+<tt class="descname">loads</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.loads" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em></p>
+<p>a dictionary of loads</p>
+<div class="line-block">
+<div class="line">Key (float): the load time point</div>
+<div class="line">loads[time] = list of loads for that time step</div>
+<div class="line">See method set_time to change the current time.</div>
+<div class="line">Time = 0.0 stores constant loads, such as:</div>
+<div class="line-block">
+<div class="line">material, thickness</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.problems">
+<tt class="descname">problems</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.problems" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Itemlist</em></p>
+<p>list of problems</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.nodes">
+<tt class="descname">nodes</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Meshlist</em></p>
+<p>list of all mesh nodes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.eshape">
+<tt class="descname">eshape</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.eshape" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
+<p>element shape</p>
+<ul class="simple">
+<li>&#8216;quad&#8217;: quadrilateral elements (Default)</li>
+<li>&#8216;tri&#8217;: triangle elements</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.eorder">
+<tt class="descname">eorder</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.eorder" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em></p>
+<p>element order, 1 or 2</p>
+<ul class="simple">
+<li>1: elements meshed with corner nodes only</li>
+<li>2: (Default) elements meshed with corner and midside nodes</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.elements">
+<tt class="descname">elements</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Meshlist</em></p>
+<p>list of all mesh elements</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.faces">
+<tt class="descname">faces</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of all element faces, includes non-exterior ones</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.view">
+<tt class="descname">view</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.view" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Selector</em></p>
+<p>currently selected items</p>
+<dl class="attribute">
+<dt>
+<tt class="descname">parts</tt></dt>
+<dd><p>list of selected parts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">areas</tt></dt>
+<dd><p>list of selected areas</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">lines</tt></dt>
+<dd><p>list of selected signed lines or arcs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">points</tt></dt>
+<dd><p>list of selected points</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">elements</tt></dt>
+<dd><p>list of selected elements</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">faces</tt></dt>
+<dd><p>list of selected faces</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">nodes</tt></dt>
+<dd><p>list of selected nodes</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.time">
+<tt class="descname">time</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.time" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em></p>
+<p>current model time value, defaults to 1.0</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.feamodel.FeaModel.units">
+<tt class="descname">units</tt><a class="headerlink" href="#pycalculix.feamodel.FeaModel.units" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em></p>
+<p>a dict to store units for different fields</p>
+<dl class="docutils">
+<dt>Keys:</dt>
+<dd><ul class="first last simple">
+<li>&#8216;displ&#8217;: displacement or location</li>
+<li>&#8216;force&#8217;: force</li>
+<li>&#8216;stress&#8217;: stress</li>
+<li>&#8216;temp&#8217;: temperature</li>
+<li>&#8216;density&#8217;: density (mass/volume)</li>
+<li>&#8216;time&#8217;: time</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Text string describing the units for the given key field.<p>See the set_units method.</p>
+<p>For example when units have been set to metric, the below
+values are returned.</p>
+<ul class="simple">
+<li>&#8216;dist&#8217; &#8211;&gt; &#8216;m&#8217;</li>
+<li>&#8216;density&#8217; &#8211;&gt; &#8216;kg/(m^3)&#8217;</li>
+<li>&#8216;time&#8217; &#8211;&gt; &#8216;s&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.get_item">
+<tt class="descname">get_item</tt><big>(</big><em>item</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.get_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.get_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an item given a string identifying the item.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item</strong> (<em>str</em>) &#8211; &#8216;A0&#8217; or &#8216;P0&#8217; or &#8216;L0&#8217; etc.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.get_items">
+<tt class="descname">get_items</tt><big>(</big><em>items</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.get_items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.get_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of correctly typed items.</p>
+<p>Input can be a single string or item, or a list of strings identifying
+items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.get_units">
+<tt class="descname">get_units</tt><big>(</big><em>*args</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.get_units"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.get_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns units for the passed arguments. Accepts and returns a list
+of strings.</p>
+<dl class="docutils">
+<dt>Options for inputs:</dt>
+<dd><ul class="first last simple">
+<li>&#8216;dist&#8217;</li>
+<li>&#8216;displ&#8217; (same units as &#8216;dist&#8217;)</li>
+<li>&#8216;force&#8217;</li>
+<li>&#8216;stress&#8217;</li>
+<li>&#8216;temp&#8217;</li>
+<li>&#8216;density&#8217;</li>
+<li>&#8216;time&#8217;</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.make_matl">
+<tt class="descname">make_matl</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.make_matl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.make_matl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes and returns a new material.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) &#8211; the material&#8217;s name</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.make_part">
+<tt class="descname">make_part</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.make_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.make_part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes and returns a new part.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.make_problem">
+<tt class="descname">make_problem</tt><big>(</big><em>problem_type='struct'</em>, <em>parts='all'</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.make_problem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.make_problem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes and returns a new problem, which can be solved.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>problem_type</strong> (<em>str</em>) &#8211; problem type, options:
+&#8216;struct&#8217;: structural</li>
+<li><strong>parts</strong> (<em>str Part or list of Part</em>) &#8211; <p>Parts the model will analyze.</p>
+<dl class="docutils">
+<dt>Options:</dt>
+<dd><ul class="first last">
+<li>&#8216;all&#8217;: add all parts. This is the default.</li>
+<li>Part: add the single part</li>
+<li>list of Part: add these parts</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.mesh">
+<tt class="descname">mesh</tt><big>(</big><em>fineness=1.0</em>, <em>mesher='gmsh'</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.mesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Meshes all parts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fineness</strong> (<em>float</em>) &#8211; <p>0.0001 - 1.0, how fine the mesh is.</p>
+<ul>
+<li>Low numbers are very fine, higher numbers are coarser.</li>
+</ul>
+</li>
+<li><strong>mesher</strong> (<em>str</em>) &#8211; <p>the mesher to use</p>
+<ul>
+<li>&#8216;gmsh&#8217;: mesh with Gmsh, this is reccomended, it allows holes</li>
+<li>&#8216;cgx&#8217;: mesh with Calculix cgx, it doesn&#8217;t allow holes</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.plot_constraints">
+<tt class="descname">plot_constraints</tt><big>(</big><em>fname=''</em>, <em>display=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.plot_constraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.plot_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the constraints on the passed part(s) or selected items.</p>
+<p>This is an element and node plot, with arrows showing displacement
+constraints.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fname</strong> (<em>str</em>) &#8211; png image file prefix, if given, image will be saved</li>
+<li><strong>display</strong> (<em>bool</em>) &#8211; if True, interactive plot will be shown, if False
+plot will not be shown. Default = True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.plot_elements">
+<tt class="descname">plot_elements</tt><big>(</big><em>fname=''</em>, <em>display=True</em>, <em>title='Elements'</em>, <em>enum=False</em>, <em>nshow=False</em>, <em>nnum=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.plot_elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.plot_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the selected elements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fname</strong> (<em>str</em>) &#8211; png image file prefix, if given, image will be saved</li>
+<li><strong>display</strong> (<em>bool</em>) &#8211; if True, interactive plot will be shown, if False
+plot will not be shown</li>
+<li><strong>title</strong> (<em>str</em>) &#8211; the plot&#8217;s title</li>
+<li><strong>enum</strong> (<em>bool</em>) &#8211; if True element numbers are plotted</li>
+<li><strong>nshow</strong> (<em>bool</em>) &#8211; True=plot nodes, False=don&#8217;t plot them</li>
+<li><strong>nnum</strong> (<em>bool</em>) &#8211; if True node numbers are plotted</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.plot_geometry">
+<tt class="descname">plot_geometry</tt><big>(</big><em>fname=''</em>, <em>display=True</em>, <em>title='Geometry'</em>, <em>pnum=True</em>, <em>lnum=True</em>, <em>anum=True</em>, <em>afill=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.plot_geometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.plot_geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots selected geometry items: areas, lines, points.</p>
+<p>Defaults to displaying labels on: areas, lines, and points, and filling
+in the areas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fname</strong> (<em>str</em>) &#8211; png image file prefix, if given, image will be saved</li>
+<li><strong>display</strong> (<em>bool</em>) &#8211; if True, interactive plot will be shown, if False
+plot will not be shown. Default = True</li>
+<li><strong>title</strong> (<em>str</em>) &#8211; the plot&#8217;s title</li>
+<li><strong>pnum</strong> (<em>bool</em>) &#8211; if True all Point objects will be labeled</li>
+<li><strong>lnum</strong> (<em>bool</em>) &#8211; if True all Line and Arc objects will be labeled</li>
+<li><strong>anum</strong> (<em>bool</em>) &#8211; if True all Area objects will be labeled</li>
+<li><strong>afill</strong> (<em>bool</em>) &#8211; if True all Area objects will be filled</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.plot_pressures">
+<tt class="descname">plot_pressures</tt><big>(</big><em>fname=''</em>, <em>display=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.plot_pressures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.plot_pressures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the load step pressures on the passed part(s) or selected
+elements.</p>
+<p>This is an element plot, with arrows showing pressure magnitude and
+directions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fname</strong> (<em>str</em>) &#8211; png image file prefix, if given, image will be saved</li>
+<li><strong>display</strong> (<em>bool</em>) &#8211; if True, interactive plot will be shown, if False
+plot will not be shown. Default = True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_constr">
+<tt class="descname">set_constr</tt><big>(</big><em>ltype</em>, <em>items</em>, <em>axis</em>, <em>val=0.0</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_constr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_constr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a displacement constraint on the passed item(s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ltype</strong> (<em>str</em>) &#8211; <p>&#8216;fix&#8217; or &#8216;displ&#8217;</p>
+<ul>
+<li>&#8216;fix&#8217;: val arg should not be passed</li>
+<li>&#8216;displ&#8217;: val arg must be passed</li>
+</ul>
+</li>
+<li><strong>items</strong> (<em>str, SignLine, SignArc, Point or list</em>) &#8211; <p>item(s) to apply the
+constraint on</p>
+<ul>
+<li>str: this string must be a line or point name</li>
+<li><dl class="first docutils">
+<dt>SignLine or SignArc: the constraint will be applied</dt>
+<dd>to this item</dd>
+</dl>
+</li>
+<li>Point: the constraint will be applied on this item</li>
+<li><dl class="first docutils">
+<dt>list of SignLine or SignArc: the constraint will be appplied</dt>
+<dd>on these</dd>
+</dl>
+</li>
+<li>list of Point: the constraint will be appplied on these</li>
+<li><dl class="first docutils">
+<dt>list of str names: pass line or point names, constr</dt>
+<dd>applied on them</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><strong>axis</strong> (<em>str</em>) &#8211; load axis, &#8216;x&#8217; or &#8216;y&#8217;</li>
+<li><strong>val</strong> (<em>float</em>) &#8211; displacement value, defaults to 0.0, only needs to be
+set when ltype = &#8216;displ&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_ediv">
+<tt class="descname">set_ediv</tt><big>(</big><em>line_name</em>, <em>ediv</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_ediv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_ediv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of elements on the passed line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>line_name</strong> (<em>str or SignLine or SignArc or list</em>) &#8211; <p>name(s) of the line(s)</p>
+<ul>
+<li>str: &#8216;L0&#8217;</li>
+<li>list of str [&#8216;L0&#8217;, &#8216;L1&#8217;]</li>
+<li>list of SignLine or SignArc part.bottom or part.hole[-1]</li>
+</ul>
+</li>
+<li><strong>ediv</strong> (<em>int</em>) &#8211; number of elements to mesh on the line</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_eshape">
+<tt class="descname">set_eshape</tt><big>(</big><em>eshape='quad'</em>, <em>eorder=2</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_eshape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_eshape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the element shape and order to use when meshing the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>eshape</strong> (<em>str</em>) &#8211; <p>element shape</p>
+<ul>
+<li>&#8216;quad&#8217;: quadrilaterials</li>
+<li>&#8216;tri&#8217;: triangles</li>
+</ul>
+</li>
+<li><strong>eorder</strong> (<em>int</em>) &#8211; <p>element order, default=2</p>
+<ul>
+<li>1: corner nodes only (3 and 4 noded elements)</li>
+<li>2: corder nodes and midside nodes (6 and 8 noded elements)</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_etype">
+<tt class="descname">set_etype</tt><big>(</big><em>etype</em>, <em>items</em>, <em>thick=None</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_etype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_etype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the element type, and thickness on areas or parts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>etype</strong> (<em>str</em>) &#8211; <p>element type</p>
+<ul>
+<li>&#8216;plstress&#8217;: plane stress</li>
+<li>&#8216;plstrain&#8217;: plane strain</li>
+<li>&#8216;axisym&#8217;: axisymmetric</li>
+</ul>
+</li>
+<li><strong>items</strong> (<em>str or Area or Part or list</em>) &#8211; <p>set element type on these</p>
+<ul>
+<li>str: string name of Area or Part item. Example: &#8216;A0&#8217;, &#8216;PART0&#8217;</li>
+<li>Area: set element type on the elements in this area</li>
+<li>Part: set element type on the elements in this part</li>
+<li>list of Area or Part: set element type on their elements</li>
+</ul>
+</li>
+<li><strong>thick</strong> (<em>float or None</em>) &#8211; <p>element thickness</p>
+<ul>
+<li>None: default, used for axisymmetric element type</li>
+<li><dl class="first docutils">
+<dt>float: thickness value to use for plane stress or plane</dt>
+<dd>strain elements</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_fluid_press">
+<tt class="descname">set_fluid_press</tt><big>(</big><em>items</em>, <em>rho</em>, <em>g</em>, <em>xo</em>, <em>po</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_fluid_press"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_fluid_press" title="Permalink to this definition">¶</a></dt>
+<dd><p>This sets a fluid presure load on items.</p>
+<p>This fluid pressure is dependednt on the x axis.
+g must be positive.</p>
+<blockquote>
+<div><ul class="simple">
+<li>P = f(x)</li>
+<li>P(xo) = po</li>
+<li>P(x) = po + rho*g*(xo - x)</li>
+</ul>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>items</strong> (<em>str or Line or Arc or list</em>) &#8211; <p>items to set pressure on</p>
+<ul>
+<li>str: string name of Line or Arc item, for example &#8216;L0&#8217;</li>
+<li>Line or Arc: set presssure on this</li>
+<li>list or Line or Arc: set pressure on these</li>
+</ul>
+</li>
+<li><strong>rho</strong> (<em>float</em>) &#8211; fluid density in mass/volume</li>
+<li><strong>g</strong> (<em>+float</em>) &#8211; gravity in dist/(t^2), MUST BE POSITIVE</li>
+<li><strong>xo</strong> (<em>float</em>) &#8211; sea level height, MUST BE POSITIVE</li>
+<li><strong>po</strong> (<em>float</em>) &#8211; sea level pressure, MUST BE POSITIVE</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_gravity">
+<tt class="descname">set_gravity</tt><big>(</big><em>grav</em>, <em>items</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_gravity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_gravity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets gravity on the elements in items.</p>
+<p>Assumes gravity acts in the -x direction with magnitude grav.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>grav</strong> (<em>float</em>) &#8211; gravity acceleration, MUST BE POSTIVE</li>
+<li><strong>items</strong> (<em>Area or Part or list</em>) &#8211; <p>items gravity acts on</p>
+<ul>
+<li>Area: gravity acts on elements in this area</li>
+<li>Part: gravity acts on elements in this part</li>
+<li>list of Part or Area: gravity acts on their elements</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_load">
+<tt class="descname">set_load</tt><big>(</big><em>ltype</em>, <em>items</em>, <em>lval</em>, <em>ldir=None</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a pressure or force load on line(s).</p>
+<p>The force load is divided by the number of nodes and applied on
+each node.</p>
+<p>The pressure load is applied to the child faces under the line.
+Positive is compression, negative is tension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ltype</strong> (<em>str</em>) &#8211; &#8216;press&#8217; or &#8216;force&#8217;</li>
+<li><strong>items</strong> (<em>str or Line or Arc or list</em>) &#8211; <p>items to set load on</p>
+<ul>
+<li>str: string name of Line or Arc item, for example &#8216;L0&#8217;</li>
+<li>Line or Arc: set load on this</li>
+<li>list or Line or Arc: set load on these</li>
+</ul>
+</li>
+<li><strong>lval</strong> (<em>float</em>) &#8211; <p>load value.</p>
+<ul>
+<li>For ltype = &#8216;press&#8217; this is in force/area units</li>
+<li>For ltype = &#8216;force&#8217; this is in force units</li>
+</ul>
+</li>
+<li><strong>ldir</strong> (<em>None or str</em>) &#8211; <p>load direction. Defaults to None</p>
+<ul>
+<li>str: when ltype=&#8217;load&#8217;, we need to set ldir to &#8216;x&#8217; or &#8216;y&#8217;</li>
+<li>None: when ltype=&#8217;press&#8217;</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_matl">
+<tt class="descname">set_matl</tt><big>(</big><em>matl</em>, <em>items</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_matl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_matl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the material on Part or Area items.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>matl</strong> (<em>Material</em>) &#8211; material to assign to items</li>
+<li><strong>items</strong> (<em>Part or Area or list</em>) &#8211; <p>items that will have matl assigned</p>
+<ul>
+<li>Part: assign matl to this</li>
+<li>Area: assign matl to this</li>
+<li>list of Area or Part: assign matl to these</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_radps">
+<tt class="descname">set_radps</tt><big>(</big><em>radps</em>, <em>items</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_radps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_radps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets radians per second rotation load on the items.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>radps</strong> (<em>float</em>) &#8211; radians per second</li>
+<li><strong>items</strong> (<em>Area or Part or list</em>) &#8211; <p>items rotation acts on</p>
+<ul>
+<li>Area: rotation acts on elements in this area</li>
+<li>Part: rotation acts on elements in this part</li>
+<li>list of Part or Area: rotation acts on their elements</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_rpm">
+<tt class="descname">set_rpm</tt><big>(</big><em>rpm</em>, <em>items</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_rpm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_rpm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets rpm rotation load on the items.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rpm</strong> (<em>float</em>) &#8211; rotation per minute</li>
+<li><strong>items</strong> (<em>Area or Part or list</em>) &#8211; <p>items rotation acts on</p>
+<ul>
+<li>Area: rotation acts on elements in this area</li>
+<li>Part: rotation acts on elements in this part</li>
+<li>list of Part or Area: rotation acts on their elements</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_time">
+<tt class="descname">set_time</tt><big>(</big><em>time</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the time in the FeaModel (preprocessor).</p>
+<p>This time is used when setting loads.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>time</strong> (<em>float</em>) &#8211; the time to set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.feamodel.FeaModel.set_units">
+<tt class="descname">set_units</tt><big>(</big><em>dist_unit='m'</em>, <em>cfswitch=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/feamodel.html#FeaModel.set_units"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.feamodel.FeaModel.set_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the units that will be displayed when plotting.</p>
+<p>Picks a unit set based on the passed distance unit.
+That unit set is printed to the console when set.
+Defaults to MKS units (meter-kilogram-second)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="10%" />
+<col width="12%" />
+<col width="22%" />
+<col width="31%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Distance</th>
+<th class="head">Force</th>
+<th class="head">Stress</th>
+<th class="head">Temperature</th>
+<th class="head">Density</th>
+<th class="head">Time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8216;m&#8217;</td>
+<td>&#8216;N&#8217;</td>
+<td>&#8216;Pa&#8217;</td>
+<td>&#8216;K&#8217;</td>
+<td>&#8216;kg/(m^3)&#8217;</td>
+<td>&#8216;s&#8217;</td>
+</tr>
+<tr class="row-odd"><td>&#8216;mm&#8217;</td>
+<td>&#8216;N&#8217;</td>
+<td>&#8216;MPa&#8217;</td>
+<td>&#8216;K&#8217;</td>
+<td>&#8216;tonne/(mm^3)&#8217;</td>
+<td>&#8216;s&#8217;</td>
+</tr>
+<tr class="row-even"><td>&#8216;in&#8217;</td>
+<td>&#8216;lbf&#8217;</td>
+<td>&#8216;psi&#8217;</td>
+<td>&#8216;R&#8217;</td>
+<td>&#8216;slinch/(in^3)&#8217;</td>
+<td>&#8216;s&#8217;</td>
+</tr>
+<tr class="row-odd"><td>&#8216;ft&#8217;</td>
+<td>&#8216;lbf&#8217;</td>
+<td>&#8216;psf&#8217;</td>
+<td>&#8216;R&#8217;</td>
+<td>&#8216;slug/(ft^3)&#8217;</td>
+<td>&#8216;s&#8217;</td>
+</tr>
+</tbody>
+</table>
+<p>See get_units method or returning text strings based on unit types.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dist_unit</strong> (<em>str</em>) &#8211; <p>string of distance unit. Options:</p>
+<ul>
+<li>&#8216;m&#8217;: meter</li>
+<li>&#8216;mm&#8217;: milimeter</li>
+<li>&#8216;in&#8217;: inch</li>
+<li>&#8216;ft&#8217;: foot</li>
+</ul>
+</li>
+<li><strong>cfswitch</strong> (<em>bool</em>) &#8211; <p>Celsius/Fahrenheit temperature switch.
+Default is False.</p>
+<p>If True, this switches temperature from K&#8211;&gt;C or from R&#8211;&gt;F
+Default keeps units as shown in above table.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycalculix.environment.html"
+                        title="previous chapter">pycalculix.environment module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pycalculix.geometry.html"
+                        title="next chapter">pycalculix.geometry module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pycalculix.feamodel.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.geometry.html" title="pycalculix.geometry module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.environment.html" title="pycalculix.environment module"
+             >previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" >pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Justin Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

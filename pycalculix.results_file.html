@@ -1,0 +1,524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycalculix.results_file module &mdash; pycalculix 0.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pycalculix 0.9.3 documentation" href="index.html" />
+    <link rel="up" title="pycalculix package" href="pycalculix.html" />
+    <link rel="next" title="pycalculix.selector module" href="pycalculix.selector.html" />
+    <link rel="prev" title="pycalculix.problem module" href="pycalculix.problem.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.selector.html" title="pycalculix.selector module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.problem.html" title="pycalculix.problem module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" accesskey="U">pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pycalculix.results_file">
+<span id="pycalculix-results-file-module"></span><h1>pycalculix.results_file module<a class="headerlink" href="#module-pycalculix.results_file" title="Permalink to this headline">¶</a></h1>
+<p>This module stores the Results_File class.</p>
+<dl class="class">
+<dt id="pycalculix.results_file.ResultsFile">
+<em class="property">class </em><tt class="descclassname">pycalculix.results_file.</tt><tt class="descname">ResultsFile</tt><big>(</big><em>problem</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Makes a results file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>problem</strong> (<em>Problem</em>) &#8211; problem that was solved</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.results_file.ResultsFile.__problem">
+<tt class="descname">__problem</tt><a class="headerlink" href="#pycalculix.results_file.ResultsFile.__problem" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Problem</em></p>
+<p>parent problem</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.results_file.ResultsFile.__steps">
+<tt class="descname">__steps</tt><a class="headerlink" href="#pycalculix.results_file.ResultsFile.__steps" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>a list of float time steps</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.results_file.ResultsFile.__results">
+<tt class="descname">__results</tt><a class="headerlink" href="#pycalculix.results_file.ResultsFile.__results" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em></p>
+<p>a dict storing the results data
+results[step][&#8216;node&#8217;][nnum][field] &#8211;&gt; value
+results[step][&#8216;element&#8217;][enum][&#8216;avg&#8217;][field] &#8211;&gt; value
+results[step][&#8216;element&#8217;][enum][&#8216;max&#8217;][field] &#8211;&gt; value
+results[step][&#8216;element&#8217;][enum][&#8216;min&#8217;][field] &#8211;&gt; value
+results[step][&#8216;element&#8217;][enum][&#8216;ipoints&#8217;][ipnum][field] &#8211;&gt; value
+field = &#8216;ux&#8217; or &#8216;Seqv&#8217; or &#8216;ey&#8217; etc.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.results_file.ResultsFile.__time">
+<tt class="descname">__time</tt><a class="headerlink" href="#pycalculix.results_file.ResultsFile.__time" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em></p>
+<p>current time we are looking at, defaults to -1
+When a file is loaded in, the first time step is loaded.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.eplot">
+<tt class="descname">eplot</tt><big>(</big><em>field</em>, <em>fname=''</em>, <em>display=True</em>, <em>levels=21</em>, <em>gmult=1.0</em>, <em>mode='avg'</em>, <em>max_val=None</em>, <em>min_val=None</em>, <em>title=''</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.eplot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.eplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots element results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>field</strong> (<em>str</em>) &#8211; results item to plot. Only stresses supported.
+Examples: &#8216;Sx&#8217;, &#8216;Sxy&#8217;, &#8216;S1&#8217;, &#8216;Seqv&#8217; etc.</li>
+<li><strong>fname</strong> (<em>str</em>) &#8211; prefix of png file name, if writing an image</li>
+<li><strong>display</strong> (<em>bool</em>) &#8211; True = interactively show the plot</li>
+<li><strong>levels</strong> (<em>int</em>) &#8211; number of levels to use in the colorbar</li>
+<li><strong>gmult</strong> (<em>int</em>) &#8211; geometric multiplier on displacement of nodes
+displayed_node_loc = model_node_loc + gmult*node_displacement</li>
+<li><strong>mode</strong> (<em>str</em>) &#8211; <p>the type of element result to plot</p>
+<ul>
+<li>&#8216;avg&#8217;: integration points averaged to avg element result</li>
+<li>&#8216;max&#8217;: max value of field in the integration points plotted</li>
+<li>&#8216;min&#8217;: min value of field in the integration points plotted</li>
+</ul>
+</li>
+<li><strong>max_val</strong> (<em>float or None</em>) &#8211; <p>max value in the colorbar</p>
+<ul>
+<li>None: max from selected data used</li>
+<li>float: use the passed float</li>
+</ul>
+</li>
+<li><strong>min_val</strong> (<em>float</em>) &#8211; <p>min value in the colorbar</p>
+<ul>
+<li>None: min from selected data used</li>
+<li>float: use the passed float</li>
+</ul>
+</li>
+<li><strong>title</strong> (<em>str</em>) &#8211; third line in the plot title</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.get_emax">
+<tt class="descname">get_emax</tt><big>(</big><em>field</em>, <em>time=None</em>, <em>mode='avg'</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.get_emax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.get_emax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the max results field value of selected elements at curent time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> (<em>str</em>) &#8211; results field, stresses supported &#8216;S1&#8217;, &#8216;Sx&#8217;, etc.</li>
+<li><strong>time</strong> (<em>None or float</em>) &#8211; <p>the time to query</p>
+<ul>
+<li>None: uses the current time</li>
+<li>float: uses the passed float time</li>
+</ul>
+</li>
+<li><strong>mode</strong> (<em>str</em>) &#8211; <p>type of element result to give back</p>
+<ul>
+<li><dl class="first docutils">
+<dt>&#8216;max&#8217;: for each element only use the max value of field over</dt>
+<dd>all of its integration points</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8216;min&#8217;: for each element only use the min value of field over</dt>
+<dd>all of its integration points</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8216;avg&#8217;: for each element only use an average of all integration</dt>
+<dd>points in the eleemnt. Principal streses and Seqv are
+calculated after averaging 6 stress components.</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>res</strong> &#8211;
+max value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.get_emin">
+<tt class="descname">get_emin</tt><big>(</big><em>field</em>, <em>time=None</em>, <em>mode='avg'</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.get_emin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.get_emin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the min results field value of selected elements at curent time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> (<em>str</em>) &#8211; results field, stresses supported &#8216;S1&#8217;, &#8216;Sx&#8217;, etc.</li>
+<li><strong>time</strong> (<em>None or float</em>) &#8211; <p>the time to query</p>
+<ul>
+<li>None: uses the current time</li>
+<li>float: uses the passed float time</li>
+</ul>
+</li>
+<li><strong>mode</strong> (<em>str</em>) &#8211; <p>type of element result to give back</p>
+<ul>
+<li><dl class="first docutils">
+<dt>&#8216;max&#8217;: for each element only use the max value of field over</dt>
+<dd>all of its integration points</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8216;min&#8217;: for each element only use the min value of field over</dt>
+<dd>all of its integration points</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>&#8216;avg&#8217;: for each element only use an average of all integration</dt>
+<dd>points in the eleemnt. Principal streses and Seqv are
+calculated after averaging 6 stress components.</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>res</strong> &#8211;
+min value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.get_eval">
+<tt class="descname">get_eval</tt><big>(</big><em>element</em>, <em>field</em>, <em>time=None</em>, <em>mode='avg'</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.get_eval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.get_eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the field result value under element.</p>
+<p>Result will be returned whether or not passed element is selected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>element</strong> (<em>str or Element</em>) &#8211; element we are asking about</li>
+<li><strong>field</strong> (<em>str</em>) &#8211; the results item we want: &#8216;Sy&#8217;, &#8216;Seqv&#8217;</li>
+<li><strong>mode</strong> (<em>str</em>) &#8211; <p>the type of element result to get</p>
+<ul>
+<li>&#8216;avg&#8217;: integration points averaged to avg element result</li>
+<li>&#8216;max&#8217;: max value of field in the integration points plotted</li>
+<li>&#8216;min&#8217;: min value of field in the integration points plotted</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Retruns:</dt>
+<dd>res (float or None): float value if field exists, None otherwise</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.get_fsum">
+<tt class="descname">get_fsum</tt><big>(</big><em>item</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.get_fsum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.get_fsum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the force sum on nodes under a given point or line.</p>
+<p>Reports results for the current time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item</strong> (<em>Point or Line</em>) &#8211; item that has reaction forces on its nodes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[fx, fy, fz] reaction forces in each axis, force units</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.get_nmax">
+<tt class="descname">get_nmax</tt><big>(</big><em>field</em>, <em>time=None</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.get_nmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.get_nmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the max value of node results field in selected nodes.</p>
+<p>Reports results for the current time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> (<em>str</em>) &#8211; results field, for example &#8216;ux&#8217;, &#8216;ey&#8217;, &#8216;S1&#8217;, &#8216;Seqv&#8217;</li>
+<li><strong>time</strong> (<em>None or float</em>) &#8211; <p>the time to query</p>
+<ul>
+<li>None: uses the current time</li>
+<li>float: uses the passed float time</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>res</strong> &#8211;
+max value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.get_nmin">
+<tt class="descname">get_nmin</tt><big>(</big><em>field</em>, <em>time=None</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.get_nmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.get_nmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the min value of node results field in selected nodes.</p>
+<p>Reports results for the current time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>field</strong> (<em>str</em>) &#8211; results field, for example &#8216;ux&#8217;, &#8216;ey&#8217;, &#8216;S1&#8217;, &#8216;Seqv&#8217;</li>
+<li><strong>time</strong> (<em>None or float</em>) &#8211; <p>the time to query</p>
+<ul>
+<li>None: uses the current time</li>
+<li>float: uses the passed float time</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>res</strong> &#8211;
+min value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.get_nval">
+<tt class="descname">get_nval</tt><big>(</big><em>node</em>, <em>field</em>, <em>time=None</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.get_nval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.get_nval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the field result value under node.</p>
+<p>Result will be returned whether or not passed node is selected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>node</strong> (<em>str or Node</em>) &#8211; node we are asking about</li>
+<li><strong>field</strong> (<em>str</em>) &#8211; the results item we want: &#8216;ux&#8217;, &#8216;Sy&#8217;, &#8216;Seqv&#8217;, &#8216;fx&#8217;</li>
+<li><strong>time</strong> (<em>None or float</em>) &#8211; <p>the time to query</p>
+<ul>
+<li>None: uses the current time</li>
+<li>float: uses the passed float time</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Retruns:</dt>
+<dd>res (float or None): float value if field exists, None otherwise</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.load">
+<tt class="descname">load</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the results file with problem.fname prefix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.nplot">
+<tt class="descname">nplot</tt><big>(</big><em>field</em>, <em>fname=''</em>, <em>display=True</em>, <em>levels=21</em>, <em>gradient=False</em>, <em>gmult=1.0</em>, <em>max_val=None</em>, <em>min_val=None</em>, <em>title=''</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.nplot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.nplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots nodal results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>field</strong> (<em>str</em>) &#8211; results item to plot, examples: &#8216;ux&#8217;, &#8216;ey&#8217;, &#8216;Seqv&#8217;</li>
+<li><strong>fname</strong> (<em>str</em>) &#8211; prefix of png file name, if writing an image</li>
+<li><strong>display</strong> (<em>bool</em>) &#8211; True = interactively show the plot</li>
+<li><strong>levels</strong> (<em>int</em>) &#8211; number of levels to use in the colorbar</li>
+<li><strong>gradient</strong> (<em>bool</em>) &#8211; True = results plotted with gradient
+False = results plotted with filled areas</li>
+<li><strong>gmult</strong> (<em>int</em>) &#8211; geometric multiplier on displacement of nodes
+displayed_node_loc = model_node_loc + gmult*node_displacement</li>
+<li><strong>max_val</strong> (<em>float or None</em>) &#8211; <p>max value in the colorbar</p>
+<ul>
+<li>None: max from selected data used</li>
+<li>float: use the passed float</li>
+</ul>
+</li>
+<li><strong>min_val</strong> (<em>float</em>) &#8211; <p>min value in the colorbar</p>
+<ul>
+<li>None: min from selected data used</li>
+<li>float: use the passed float</li>
+</ul>
+</li>
+<li><strong>title</strong> (<em>str</em>) &#8211; third line in the plot title</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.results_file.ResultsFile.set_time">
+<tt class="descname">set_time</tt><big>(</big><em>time</em><big>)</big><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.set_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.set_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the time point we&#8217;re looking at in the results file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>time</strong> (<em>float</em>) &#8211; time we are setting</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.results_file.ResultsFile.steps">
+<tt class="descname">steps</tt><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.steps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of loaded time steps.</p>
+<p>Note: this is read only, you can not assign a value to it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.results_file.ResultsFile.time">
+<tt class="descname">time</tt><a class="reference internal" href="_modules/pycalculix/results_file.html#ResultsFile.time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.results_file.ResultsFile.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current time (float) in the results file.</p>
+<p>Note: this is read only, you can not assign a value to it.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycalculix.problem.html"
+                        title="previous chapter">pycalculix.problem module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pycalculix.selector.html"
+                        title="next chapter">pycalculix.selector module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pycalculix.results_file.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.selector.html" title="pycalculix.selector module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.problem.html" title="pycalculix.problem module"
+             >previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" >pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Justin Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

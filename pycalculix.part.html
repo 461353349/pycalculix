@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycalculix.part module &mdash; pycalculix 0.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pycalculix 0.9.3 documentation" href="index.html" />
+    <link rel="up" title="pycalculix package" href="pycalculix.html" />
+    <link rel="next" title="pycalculix.problem module" href="pycalculix.problem.html" />
+    <link rel="prev" title="pycalculix.mesh module" href="pycalculix.mesh.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.problem.html" title="pycalculix.problem module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.mesh.html" title="pycalculix.mesh module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" accesskey="U">pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pycalculix.part">
+<span id="pycalculix-part-module"></span><h1>pycalculix.part module<a class="headerlink" href="#module-pycalculix.part" title="Permalink to this headline">¶</a></h1>
+<p>This module stores the Part class. It is used to make 2D parts.</p>
+<dl class="class">
+<dt id="pycalculix.part.Part">
+<em class="property">class </em><tt class="descclassname">pycalculix.part.</tt><tt class="descname">Part</tt><big>(</big><em>feamodel</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>This makes a part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parent</strong> &#8211; parent FeaModel</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.part.Part.__fea">
+<tt class="descname">__fea</tt><a class="headerlink" href="#pycalculix.part.Part.__fea" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>FeaModel</em></p>
+<p>parent FeaModel</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.points">
+<tt class="descname">points</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.points" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list or part points, excludes arc centers</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.allpoints">
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.allpoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.allpoints" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list or part points, includes arc centers</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.lines">
+<tt class="descname">lines</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.lines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of all Line and Arc that make the part</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.signlines">
+<tt class="descname">signlines</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.signlines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.signlines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of all SignLine and SignArc that make the part</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.__cursor">
+<tt class="descname">__cursor</tt><a class="headerlink" href="#pycalculix.part.Part.__cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Point</em></p>
+<p>location of a cursor drawing the part</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.__holemode">
+<tt class="descname">__holemode</tt><a class="headerlink" href="#pycalculix.part.Part.__holemode" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em></p>
+<p>if True, lines will be added to holes, otherwise,
+they&#8217;ll be added to areas</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.areas">
+<tt class="descname">areas</tt><a class="headerlink" href="#pycalculix.part.Part.areas" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of Area that make up the part</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.left">
+<tt class="descname">left</tt><a class="headerlink" href="#pycalculix.part.Part.left" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list the parts leftmost lines, they must be vertical</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.right">
+<tt class="descname">right</tt><a class="headerlink" href="#pycalculix.part.Part.right" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list the parts rightmost lines, they must be vertical</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.top">
+<tt class="descname">top</tt><a class="headerlink" href="#pycalculix.part.Part.top" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list the parts top lines, they must be horizontal</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.bottom">
+<tt class="descname">bottom</tt><a class="headerlink" href="#pycalculix.part.Part.bottom" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list the parts bottom lines, they must be horizontal</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.nodes">
+<tt class="descname">nodes</tt><a class="headerlink" href="#pycalculix.part.Part.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of part&#8217;s nodes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.part.Part.elements">
+<tt class="descname">elements</tt><a class="headerlink" href="#pycalculix.part.Part.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of part&#8217;s elements</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.__hash__">
+<tt class="descname">__hash__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the item&#8217;s id as its hash.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string listing object type, id number and name.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.allpoints"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns list of part points, includes arc centers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.chunk">
+<tt class="descname">chunk</tt><big>(</big><em>mode='both'</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.chunk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.chunk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chunks all areas in the part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mode</strong> (<em>str</em>) &#8211; <p>area chunking mode</p>
+<ul class="simple">
+<li>&#8216;both&#8217;: cuts areas using holes and exterior points</li>
+<li>&#8216;holes&#8217;: cut areas using holes points only</li>
+<li>&#8216;ext&#8217;: cut areas using exterior points only</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.draw_arc">
+<tt class="descname">draw_arc</tt><big>(</big><em>end_x</em>, <em>end_y</em>, <em>center_x</em>, <em>center_y</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.draw_arc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.draw_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes an arc and adds it to the part.</p>
+<div class="line-block">
+<div class="line">Current point is the first arc point.</div>
+<div class="line">(end_x, end_y) is the end point</div>
+<div class="line">(center_x, center_y) is the arc center</div>
+</div>
+<div class="line-block">
+<div class="line">Degrees: Traversed angle of arc must be &lt; 180 degrees</div>
+<div class="line">Radians: Traversed angle of arc must be &lt; Pi</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>end_x</strong> (<em>float</em>) &#8211; arc end point x-coordinate</li>
+<li><strong>end_y</strong> (<em>float</em>) &#8211; arc end point y-coordinate</li>
+<li><strong>center_x</strong> (<em>float</em>) &#8211; arc center point x-coordinate</li>
+<li><strong>center_y</strong> (<em>float</em>) &#8211; arc center point y-coordinate</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">[arc, arc_start_point, arc_end_point]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.draw_arc_angle">
+<tt class="descname">draw_arc_angle</tt><big>(</big><em>degrees_ccw</em>, <em>center_x</em>, <em>center_y</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.draw_arc_angle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.draw_arc_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes an arc and adds it to the part.</p>
+<div class="line-block">
+<div class="line">Current point is the first arc point.</div>
+<div class="line">degrees_ccw is the swept angle in degrees, counterclockwise</div>
+<div class="line">(center_x, center_y) is the arc center</div>
+</div>
+<div class="line-block">
+<div class="line">Degrees: Traversed angle of arc must be &lt; 180 degrees</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>degrees_ccw</strong> (<em>float</em>) &#8211; arc swept angle in degrees, counterclockwise</li>
+<li><strong>center_x</strong> (<em>float</em>) &#8211; arc center point x-coordinate</li>
+<li><strong>center_y</strong> (<em>float</em>) &#8211; arc center point y-coordinate</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">[arc, arc_start_point, arc_end_point]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.draw_hole">
+<tt class="descname">draw_hole</tt><big>(</big><em>center_x</em>, <em>center_y</em>, <em>radius</em>, <em>num_arcs=4</em>, <em>filled=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.draw_hole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.draw_hole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes a hole in the part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>center_x</strong> (<em>float</em>) &#8211; x-axis hole center</li>
+<li><strong>center_y</strong> (<em>float</em>) &#8211; y-axis hole center</li>
+<li><strong>radius</strong> (<em>float</em>) &#8211; hole radius</li>
+<li><strong>num_arcs</strong> (<em>int</em>) &#8211; number of arcs to use</li>
+<li><strong>filled</strong> (<em>bool</em>) &#8211; <p>whether to fill the hole</p>
+<ul>
+<li>True: makes a new area in the part</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p><strong>hole_lines</strong> &#8211;
+list of hole SignLine or SignArc</p>
+<blockquote>
+<div><ul class="simple">
+<li>Returns None if hole was not made.</li>
+</ul>
+</div></blockquote>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list or None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.draw_line_ax">
+<tt class="descname">draw_line_ax</tt><big>(</big><em>dy_ax</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.draw_line_ax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.draw_line_ax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a line a relative axial distance, and adds it to the part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dy_ax</strong> (<em>float</em>) &#8211; y-axis delta distance to draw the line</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[line, point_start, point_end]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.draw_line_delta">
+<tt class="descname">draw_line_delta</tt><big>(</big><em>delta_x</em>, <em>delta_y</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.draw_line_delta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.draw_line_delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a line a relative distance, and adds it to the part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>delta_x</strong> (<em>float</em>) &#8211; x-axis delta distance to draw the line</li>
+<li><strong>delta_y</strong> (<em>float</em>) &#8211; y-axis delta distance to draw the line</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">[line, point_start, point_end]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.draw_line_rad">
+<tt class="descname">draw_line_rad</tt><big>(</big><em>dx_rad</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.draw_line_rad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.draw_line_rad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a line a relative radial distance, and adds it to the part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dx_rad</strong> (<em>float</em>) &#8211; x-axis delta distance to draw the line</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[line, point_start, point_end]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.draw_line_to">
+<tt class="descname">draw_line_to</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.draw_line_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.draw_line_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a line to the given location, and adds it to the part.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>float</em>) &#8211; x-axis coordinate of the end point</li>
+<li><strong>y</strong> (<em>float</em>) &#8211; y-axis coordinate of the end point</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">[SignLine, point_start, point_end]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.fillet_lines">
+<tt class="descname">fillet_lines</tt><big>(</big><em>line1</em>, <em>line2</em>, <em>radius</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.fillet_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.fillet_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fillets the given lines in the part.</p>
+<p>This inserts an arc in the part tangent to the two given lines.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>line1</strong> (<em>Line</em>) &#8211; line that the arc starts on, arc is tangent to the line</li>
+<li><strong>line2</strong> (<em>Line</em>) &#8211; line that the ar ends on, arc is tangent to the line</li>
+<li><strong>radius</strong> (<em>float</em>) &#8211; arc radius size</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">[arc, start_point, end_point]</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.get_item">
+<tt class="descname">get_item</tt><big>(</big><em>item</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.get_item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.get_item" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;Returns the part&#8217;s item(s) requested by the passed string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>item</strong> (<em>str</em>) &#8211; <p>string requesting item(s)</p>
+<ul class="simple">
+<li>Valid examples: &#8216;P0&#8217;, &#8216;L0&#8217;, &#8216;left&#8217;, &#8216;A0&#8217;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">item(s) or None: If items are found they are returned<ul class="simple">
+<li>If there is only one item it is returned</li>
+<li>If there are multiple items, they are returned as a list</li>
+<li>If no items are found None is returned</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the part name based on id number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.part.Part.goto">
+<tt class="descname">goto</tt><big>(</big><em>x</em>, <em>y</em>, <em>holemode=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/part.html#Part.goto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.part.Part.goto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves the part cursor to a location.</p>
+<p>If that location has a point at it, use it.
+If not, make a new point at that location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>float</em>) &#8211; x-coordinate of the point to go to</li>
+<li><strong>y</strong> (<em>float</em>) &#8211; y-coordinate of the point to go to</li>
+<li><strong>holemode</strong> (<em>bool</em>) &#8211; if True, we start drawing a hole here, otherwise
+we start drawing an area</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self.__cursor (Point): returns the updated cursor point</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">lines</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.lines"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns list of part lines.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">points</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.points"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns list of part points, excludes arc centers.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">signlines</tt><a class="reference internal" href="_modules/pycalculix/part.html#Part.signlines"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns list of part signline and signarc.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycalculix.mesh.html"
+                        title="previous chapter">pycalculix.mesh module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pycalculix.problem.html"
+                        title="next chapter">pycalculix.problem module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pycalculix.part.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.problem.html" title="pycalculix.problem module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.mesh.html" title="pycalculix.mesh module"
+             >previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" >pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Justin Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycalculix.problem &mdash; pycalculix 0.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="pycalculix 0.9.3 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for pycalculix.problem</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;This module stores the Problem class which is used to solve different types</span>
+<span class="sd">of analysis.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">subprocess</span> <span class="c"># used to launch ccx solver</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="c"># used to see if there is a results file</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">environment</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">base_classes</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">results_file</span>
+
+<div class="viewcode-block" id="Problem"><a class="viewcode-back" href="../../pycalculix.problem.html#pycalculix.problem.Problem">[docs]</a><span class="k">class</span> <span class="nc">Problem</span><span class="p">(</span><span class="n">base_classes</span><span class="o">.</span><span class="n">Idobj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Makes a problem which can be analyzed with Calculix ccx.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        feamodel (FeaModel): the parent FeaModel</span>
+<span class="sd">        problem_type (str): model type, options:</span>
+
+<span class="sd">            - &#39;struct&#39;: structural</span>
+<span class="sd">        parts (Part or list of Part): stores the parts to run the analysis on</span>
+<span class="sd">        fname (str): file prefix for the problem .inp and results files</span>
+<span class="sd">            If value is &#39;&#39; it will default to the project name of the FeaModel</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        fea (FeaModel): parent FeaModel</span>
+<span class="sd">        __parts (list of Part): stores the parts to run the analysis on</span>
+<span class="sd">        __ptype (str): problem type, options:</span>
+
+<span class="sd">            - &#39;struct&#39;: structural</span>
+<span class="sd">        solved (bool): boolean storing whether or not the analysis was solved</span>
+<span class="sd">        fname (str): the problem database and results file prefix</span>
+<span class="sd">        rfile (Results_File):</span>
+<span class="sd">            Results_File is loaded in after the model has been solved</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feamodel</span><span class="p">,</span> <span class="n">problem_type</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fea</span> <span class="o">=</span> <span class="n">feamodel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__parts</span> <span class="o">=</span> <span class="n">base_classes</span><span class="o">.</span><span class="n">listify</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__ptype</span> <span class="o">=</span> <span class="n">problem_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solved</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">fname</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">fname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fea</span><span class="o">.</span><span class="n">fname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fname</span> <span class="o">=</span> <span class="n">fname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rfile</span> <span class="o">=</span> <span class="n">results_file</span><span class="o">.</span><span class="n">ResultsFile</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">base_classes</span><span class="o">.</span><span class="n">Idobj</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fea</span><span class="o">.</span><span class="n">problems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__get_ntxt</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns list of strings defining all nodes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            nodes (list): list of all nodes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*NODE, NSET=nodes&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">ccx</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="k">def</span> <span class="nf">__get_etxt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns list of strings defining all elements.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            elements (list): list of all elements</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ccxtypes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">ccxtype</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">])</span>
+        <span class="n">eall_written</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">eall</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ccxtype</span> <span class="ow">in</span> <span class="n">ccxtypes</span><span class="p">:</span>
+            <span class="n">setname</span> <span class="o">=</span> <span class="n">ccxtype</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ccxtypes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">setname</span> <span class="o">=</span> <span class="s">&#39;EAll&#39;</span>
+                <span class="n">eall_written</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*ELEMENT, TYPE=</span><span class="si">%s</span><span class="s">, ELSET=</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ccxtype</span><span class="p">,</span> <span class="n">setname</span><span class="p">))</span>
+            <span class="n">elist</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elements</span> <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">ccxtype</span> <span class="o">==</span> <span class="n">ccxtype</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">elist</span><span class="p">:</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">ccx</span><span class="p">())</span>
+            <span class="n">eall</span> <span class="o">+=</span> <span class="n">elist</span>
+        <span class="k">if</span> <span class="n">eall_written</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_eset</span><span class="p">(</span><span class="s">&#39;EALL&#39;</span><span class="p">,</span> <span class="n">eall</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">tmp</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__get_ctxt</span><span class="p">(</span><span class="n">components</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns list of strings defining all components.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            components (list): list of all components</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="n">comp</span><span class="o">.</span><span class="n">ccx</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">__get_eset</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">elements</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns list of strings defining components of elements.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): component name</span>
+<span class="sd">            elements (list): list of component elements</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">items_per_line</span> <span class="o">=</span> <span class="mi">6</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*ELSET,ELSET=&#39;</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">grouped_els</span> <span class="o">=</span> <span class="n">base_classes</span><span class="o">.</span><span class="n">chunk_list</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">items_per_line</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">grouped_els</span><span class="p">:</span>
+            <span class="n">item_ids</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">group</span><span class="p">]</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="s">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">item_ids</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">group</span> <span class="o">!=</span> <span class="n">grouped_els</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">line</span> <span class="o">+=</span> <span class="s">&#39;,&#39;</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+
+<div class="viewcode-block" id="Problem.solve"><a class="viewcode-back" href="../../pycalculix.problem.html#pycalculix.problem.Problem.solve">[docs]</a>    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Solves the model in Calculix ccx.&quot;&quot;&quot;</span>
+        <span class="n">inp</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c"># store what results we&#39;ll be outputting for each type of analysis</span>
+        <span class="n">out_el</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">out_el</span><span class="p">[</span><span class="s">&#39;struct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;E,S&#39;</span> <span class="c"># strain, stress</span>
+        <span class="n">out_node</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">out_node</span><span class="p">[</span><span class="s">&#39;struct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;RF,U&#39;</span> <span class="c"># reaction forces, displacement</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ptype</span> <span class="o">==</span> <span class="s">&#39;struct&#39;</span><span class="p">:</span>
+            <span class="c"># store nodes, elements, components</span>
+            <span class="n">box</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">box</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">box</span><span class="p">[</span><span class="s">&#39;elements&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">box</span><span class="p">[</span><span class="s">&#39;components&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+            <span class="c"># store all loads in the parts in this model</span>
+            <span class="n">load_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fea</span><span class="o">.</span><span class="n">loads</span>
+
+            <span class="c"># store all nodes, elements, and part element sets</span>
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parts</span><span class="p">:</span>
+                <span class="n">box</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">part</span><span class="o">.</span><span class="n">nodes</span>
+                <span class="n">box</span><span class="p">[</span><span class="s">&#39;elements&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">part</span><span class="o">.</span><span class="n">elements</span>
+
+            <span class="c"># store all node and element components</span>
+            <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">load_dict</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">load_dict</span><span class="p">[</span><span class="n">time</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">load</span><span class="o">.</span><span class="n">ltype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;press&#39;</span><span class="p">,</span> <span class="s">&#39;press_fluid&#39;</span><span class="p">]:</span>
+                        <span class="n">box</span><span class="p">[</span><span class="s">&#39;components&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">load</span><span class="o">.</span><span class="n">comp</span><span class="p">)</span>
+
+            <span class="n">box</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_ntxt</span><span class="p">(</span><span class="n">box</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">])</span>
+            <span class="n">box</span><span class="p">[</span><span class="s">&#39;elements&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_etxt</span><span class="p">(</span><span class="n">box</span><span class="p">[</span><span class="s">&#39;elements&#39;</span><span class="p">])</span>
+            <span class="n">box</span><span class="p">[</span><span class="s">&#39;components&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_ctxt</span><span class="p">(</span><span class="n">box</span><span class="p">[</span><span class="s">&#39;components&#39;</span><span class="p">])</span>
+
+            <span class="c"># add text definition for nodes, elelents, components</span>
+            <span class="n">inp</span> <span class="o">+=</span> <span class="n">box</span><span class="p">[</span><span class="s">&#39;nodes&#39;</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
+            <span class="n">inp</span> <span class="o">+=</span> <span class="n">box</span><span class="p">[</span><span class="s">&#39;elements&#39;</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
+            <span class="n">inp</span> <span class="o">+=</span> <span class="n">box</span><span class="p">[</span><span class="s">&#39;components&#39;</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span>
+
+            <span class="c"># read in all materials</span>
+            <span class="k">for</span> <span class="n">matl</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fea</span><span class="o">.</span><span class="n">matls</span><span class="p">:</span>
+                <span class="n">inp</span> <span class="o">+=</span> <span class="n">matl</span><span class="o">.</span><span class="n">ccx</span><span class="p">()</span>
+
+            <span class="c"># write all steps and loads</span>
+            <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">load_dict</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c"># this is for thicknesses and materials</span>
+                    <span class="k">for</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">load_dict</span><span class="p">[</span><span class="n">time</span><span class="p">]:</span>
+                        <span class="n">inp</span> <span class="o">+=</span> <span class="n">load</span><span class="o">.</span><span class="n">ccx</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c"># only write times &gt;= 1</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*STEP&#39;</span><span class="p">)</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*STATIC&#39;</span><span class="p">)</span>
+
+                    <span class="k">for</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">load_dict</span><span class="p">[</span><span class="n">time</span><span class="p">]:</span>
+                        <span class="n">inp</span> <span class="o">+=</span> <span class="n">load</span><span class="o">.</span><span class="n">ccx</span><span class="p">()</span>
+
+                    <span class="c"># make output frd file for cgx</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*EL FILE&#39;</span><span class="p">)</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_el</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__ptype</span><span class="p">])</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*NODE FILE&#39;</span><span class="p">)</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out_node</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__ptype</span><span class="p">])</span>
+
+                    <span class="c"># make output dat file for integration point results</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*EL PRINT,ELSET=EALL&#39;</span><span class="p">)</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;S&#39;</span><span class="p">)</span>
+
+                    <span class="c"># end step</span>
+                    <span class="n">inp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;*END STEP&#39;</span><span class="p">)</span>
+
+            <span class="c"># write CCX inp file to the local directory</span>
+            <span class="n">fname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fname</span><span class="o">+</span><span class="s">&#39;.inp&#39;</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inp</span><span class="p">:</span>
+                    <span class="c">#print (line)</span>
+                    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="o">+</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;File: </span><span class="si">%s</span><span class="s"> was written&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fname</span><span class="p">))</span>
+
+            <span class="c"># run file</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">environment</span><span class="o">.</span><span class="n">CCX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fname</span><span class="p">),</span>
+                            <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Solving done!&#39;</span><span class="p">)</span>
+
+            <span class="c"># select the probem&#39;s parts and load the results file</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">solved</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rfile</span><span class="o">.</span><span class="n">load</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Justin Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

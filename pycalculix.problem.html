@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycalculix.problem module &mdash; pycalculix 0.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pycalculix 0.9.3 documentation" href="index.html" />
+    <link rel="up" title="pycalculix package" href="pycalculix.html" />
+    <link rel="next" title="pycalculix.results_file module" href="pycalculix.results_file.html" />
+    <link rel="prev" title="pycalculix.part module" href="pycalculix.part.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.results_file.html" title="pycalculix.results_file module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.part.html" title="pycalculix.part module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" accesskey="U">pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pycalculix.problem">
+<span id="pycalculix-problem-module"></span><h1>pycalculix.problem module<a class="headerlink" href="#module-pycalculix.problem" title="Permalink to this headline">¶</a></h1>
+<p>This module stores the Problem class which is used to solve different types
+of analysis.</p>
+<dl class="class">
+<dt id="pycalculix.problem.Problem">
+<em class="property">class </em><tt class="descclassname">pycalculix.problem.</tt><tt class="descname">Problem</tt><big>(</big><em>feamodel</em>, <em>problem_type</em>, <em>parts</em>, <em>fname=''</em><big>)</big><a class="reference internal" href="_modules/pycalculix/problem.html#Problem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.problem.Problem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>Makes a problem which can be analyzed with Calculix ccx.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>feamodel</strong> (<em>FeaModel</em>) &#8211; the parent FeaModel</li>
+<li><strong>problem_type</strong> (<em>str</em>) &#8211; <p>model type, options:</p>
+<ul>
+<li>&#8216;struct&#8217;: structural</li>
+</ul>
+</li>
+<li><strong>parts</strong> (<em>Part or list of Part</em>) &#8211; stores the parts to run the analysis on</li>
+<li><strong>fname</strong> (<em>str</em>) &#8211; file prefix for the problem .inp and results files
+If value is &#8216;&#8217; it will default to the project name of the FeaModel</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.problem.Problem.fea">
+<tt class="descname">fea</tt><a class="headerlink" href="#pycalculix.problem.Problem.fea" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>FeaModel</em></p>
+<p>parent FeaModel</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.problem.Problem.__parts">
+<tt class="descname">__parts</tt><a class="headerlink" href="#pycalculix.problem.Problem.__parts" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Part</em></p>
+<p>stores the parts to run the analysis on</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.problem.Problem.__ptype">
+<tt class="descname">__ptype</tt><a class="headerlink" href="#pycalculix.problem.Problem.__ptype" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
+<p>problem type, options:</p>
+<ul class="simple">
+<li>&#8216;struct&#8217;: structural</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.problem.Problem.solved">
+<tt class="descname">solved</tt><a class="headerlink" href="#pycalculix.problem.Problem.solved" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em></p>
+<p>boolean storing whether or not the analysis was solved</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.problem.Problem.fname">
+<tt class="descname">fname</tt><a class="headerlink" href="#pycalculix.problem.Problem.fname" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
+<p>the problem database and results file prefix</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.problem.Problem.rfile">
+<tt class="descname">rfile</tt><a class="headerlink" href="#pycalculix.problem.Problem.rfile" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Results_File</em></p>
+<p>Results_File is loaded in after the model has been solved</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.problem.Problem.solve">
+<tt class="descname">solve</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/problem.html#Problem.solve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.problem.Problem.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solves the model in Calculix ccx.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycalculix.part.html"
+                        title="previous chapter">pycalculix.part module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pycalculix.results_file.html"
+                        title="next chapter">pycalculix.results_file module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pycalculix.problem.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.results_file.html" title="pycalculix.results_file module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.part.html" title="pycalculix.part module"
+             >previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" >pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Justin Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

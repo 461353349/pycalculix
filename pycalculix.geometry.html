@@ -1,0 +1,1702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycalculix.geometry module &mdash; pycalculix 0.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pycalculix 0.9.3 documentation" href="index.html" />
+    <link rel="up" title="pycalculix package" href="pycalculix.html" />
+    <link rel="next" title="pycalculix.loads module" href="pycalculix.loads.html" />
+    <link rel="prev" title="pycalculix.feamodel module" href="pycalculix.feamodel.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.loads.html" title="pycalculix.loads module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.feamodel.html" title="pycalculix.feamodel module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" accesskey="U">pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pycalculix.geometry">
+<span id="pycalculix-geometry-module"></span><h1>pycalculix.geometry module<a class="headerlink" href="#module-pycalculix.geometry" title="Permalink to this headline">¶</a></h1>
+<p>This module stores geometry classes, which are used to make parts.</p>
+<dl class="class">
+<dt id="pycalculix.geometry.Arc">
+<em class="property">class </em><tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">Arc</tt><big>(</big><em>p1</em>, <em>p2</em>, <em>actr</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>Makes an arc from points p1 to p2 about center actr.</p>
+<p>Arcs should be 90 degrees maximum.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>p1</strong> (<em>Point</em>) &#8211; first point</li>
+<li><strong>p2</strong> (<em>Point</em>) &#8211; second point</li>
+<li><strong>actr</strong> (<em>Point</em>) &#8211; arc center</li>
+<li><strong>sign</strong> (<em>int</em>) &#8211; <p>1 or -1, defines direction of line</p>
+<ul>
+<li>+1: p1 -&gt; p2</li>
+<li>-1: p2 -&gt; p1</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.points">
+<tt class="descname">points</tt><a class="headerlink" href="#pycalculix.geometry.Arc.points" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Point</em></p>
+<p>list of the line&#8217;s points [p1,p2]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.allpoints">
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.allpoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.allpoints" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Point</em></p>
+<p>[p1, p2, actr]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.sign">
+<tt class="descname">sign</tt><a class="headerlink" href="#pycalculix.geometry.Arc.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em></p>
+<p>1 or -1, defines direction of line</p>
+<ul class="simple">
+<li>+1: p1 -&gt; p2</li>
+<li>-1: p2 -&gt; p1</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.actr">
+<tt class="descname">actr</tt><a class="headerlink" href="#pycalculix.geometry.Arc.actr" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Point</em></p>
+<p>arc center</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.radius">
+<tt class="descname">radius</tt><a class="headerlink" href="#pycalculix.geometry.Arc.radius" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em></p>
+<p>radius of the arc</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.concavity">
+<tt class="descname">concavity</tt><a class="headerlink" href="#pycalculix.geometry.Arc.concavity" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
+<ul class="simple">
+<li>&#8216;concave&#8217;: concave arc</li>
+<li>&#8216;convex&#8217;: convex arc</li>
+</ul>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.midpt">
+<tt class="descname">midpt</tt><a class="headerlink" href="#pycalculix.geometry.Arc.midpt" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Point</em></p>
+<p>a mid-point between p1 and p2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.nodes">
+<tt class="descname">nodes</tt><a class="headerlink" href="#pycalculix.geometry.Arc.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Node</em></p>
+<p>a list of meshed nodes on the line</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.faces">
+<tt class="descname">faces</tt><a class="headerlink" href="#pycalculix.geometry.Arc.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Face</em></p>
+<p>a list of meshed faces on the line</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.__eq__">
+<tt class="descname">__eq__</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns bool telling if self == other</p>
+<p>Returns True if the lines are the same type, and contain the same
+list of points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.__hash__">
+<tt class="descname">__hash__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the hash of the item to the id number.</p>
+<p>This allows one to make sets of these items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string listing object type, id number, and points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.add_signline">
+<tt class="descname">add_signline</tt><big>(</big><em>signline</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.add_signline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.add_signline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a signline to self.signlines.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.allpoints"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns all points including arc center</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Arc.areas">
+<tt class="descname">areas</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.areas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.areas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all areas that signlines use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.coincident">
+<tt class="descname">coincident</tt><big>(</big><em>pt</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.coincident"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.coincident" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if pt is on the arc.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pt</strong> (<em>Point</em>) &#8211; input point to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if pt on arc or False if not</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.get_ang">
+<tt class="descname">get_ang</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.get_ang"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.get_ang" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns angle from beginning to end of arc from arc ctr in degrees</p>
+<p class="rubric">Notes</p>
+<p>Answer is between 180 and -180
+Positive is concave
+Negative is convex</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.get_concavity">
+<tt class="descname">get_concavity</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.get_concavity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.get_concavity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns concavity of this arc, &#8216;concave&#8217; or &#8216;convex&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the arc name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.get_perp_vec">
+<tt class="descname">get_perp_vec</tt><big>(</big><em>pt</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.get_perp_vec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.get_perp_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns vector perpendicular to current arc.</p>
+<dl class="docutils">
+<dt>Right hand rule is used:</dt>
+<dd>X+ is the direction of the arc from start to end.
+Z+ is out of the page
+Y+ is the direction of the perpendicular vector</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pt</strong> (<em>Point</em>) &#8211; point on arc where we want the perpendicular vector</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>resv</strong> &#8211;
+perpendicular vector</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Point</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.get_pt_at">
+<tt class="descname">get_pt_at</tt><big>(</big><em>nondim</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.get_pt_at"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.get_pt_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns point on arc between start and end point at nondim dist.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nondim</strong> (<em>float</em>) &#8211; distance between start and end point, 0=start, 1=end</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>res</strong> &#8211;
+requested point on arc</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Point</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.intersects">
+<tt class="descname">intersects</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.intersects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if other line intersects this arc.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Line or Arc</em>) &#8211; other line to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Point or None:
+Point: intersection point
+None: None if lines don&#8217;t intersect</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.length">
+<tt class="descname">length</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length of the arc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.mid">
+<tt class="descname">mid</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.mid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.mid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Caclulates and returns the midpoint of the arc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.pt">
+<tt class="descname">pt</tt><big>(</big><em>ind</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.pt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start or end point of the arc.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ind</strong> (<em>int</em>) &#8211; index of the point we want, 0=start, 1=end</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">requested Point</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Point</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.save_to_points">
+<tt class="descname">save_to_points</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.save_to_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.save_to_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>This stores this line in the line&#8217;s child points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.set_ediv">
+<tt class="descname">set_ediv</tt><big>(</big><em>ediv</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.set_ediv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.set_ediv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of element divisions on the arc when meshing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ediv</strong> (<em>int</em>) &#8211; number of required elements on this arc</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pycalculix.geometry.Arc.sgn">
+<em class="property">static </em><tt class="descname">sgn</tt><big>(</big><em>val</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.sgn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.sgn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns sign of the passed value.</p>
+<p>Helper function for self.interects code.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>val</strong> (<em>float</em>) &#8211; passed value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">1 or -1: sign of the passed value, assumes sign of zero = 1</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.signed_copy">
+<tt class="descname">signed_copy</tt><big>(</big><em>sign</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.signed_copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.signed_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a SignArc instance of this Arc with the passed sign.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Arc.touches">
+<tt class="descname">touches</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Arc.touches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Arc.touches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if this arc is connected to a passed line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Line or Arc</em>) &#8211; passed other line</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">beginning or end point connect to other line
+False: lines are not connected</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">True</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycalculix.geometry.Area">
+<em class="property">class </em><tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">Area</tt><big>(</big><em>parent</em>, <em>line_list=[]</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>Makes an area.</p>
+<p>Area is closed in a clockwise direction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>p</strong> (<em>Part</em>) &#8211; parent part</li>
+<li><strong>line_list</strong> (<em>list</em>) &#8211; list of Lines and Arcs that close the area</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.p">
+<tt class="descname">p</tt><a class="headerlink" href="#pycalculix.geometry.Area.p" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Part</em></p>
+<p>parent part</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.closed">
+<tt class="descname">closed</tt><a class="headerlink" href="#pycalculix.geometry.Area.closed" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>boolean</em></p>
+<p>True if closed, False if not</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.exlines">
+<tt class="descname">exlines</tt><a class="headerlink" href="#pycalculix.geometry.Area.exlines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of signlines that define the area exterior</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.signlines">
+<tt class="descname">signlines</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.signlines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.signlines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of signed lines or arcs that define the area</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.lines">
+<tt class="descname">lines</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.lines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>a list of all the lines that make the area, includes hole
+lines</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.point">
+<tt class="descname">point</tt><a class="headerlink" href="#pycalculix.geometry.Area.point" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>a list of all points making the area, excludes arc centers</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.allpoints">
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.allpoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.allpoints" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>a list of all points, includes arc centers</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.holepoints">
+<tt class="descname">holepoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.holepoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.holepoints" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>a list of hole points, excludes arc centers</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.matl">
+<tt class="descname">matl</tt><a class="headerlink" href="#pycalculix.geometry.Area.matl" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Matl</em></p>
+<p>the material fo the area</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.etype">
+<tt class="descname">etype</tt><a class="headerlink" href="#pycalculix.geometry.Area.etype" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
+<p>element type of area. Options are:
+&#8216;plstress&#8217;: plane stress
+&#8216;plstrain&#8217;: plane strain
+&#8216;axisym&#8217;: axisymmetric</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.area">
+<tt class="descname">area</tt><a class="headerlink" href="#pycalculix.geometry.Area.area" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em></p>
+<p>in-plane part area (ballpark number, arcs not calc right)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.holes">
+<tt class="descname">holes</tt><a class="headerlink" href="#pycalculix.geometry.Area.holes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of list of signlines</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.center">
+<tt class="descname">center</tt><a class="headerlink" href="#pycalculix.geometry.Area.center" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Point or None</em></p>
+<p>the area centroid point. None before closed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.nodes">
+<tt class="descname">nodes</tt><a class="headerlink" href="#pycalculix.geometry.Area.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>child mesh nodes that are in the area</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.elements">
+<tt class="descname">elements</tt><a class="headerlink" href="#pycalculix.geometry.Area.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>child elements that are in the area</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.__hash__">
+<tt class="descname">__hash__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the item&#8217;s id as its hash.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string listing the area&#8217;s name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.add_hole_sline">
+<tt class="descname">add_hole_sline</tt><big>(</big><em>signline</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.add_hole_sline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.add_hole_sline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds signline to the area hole definition.</p>
+<p>Line is added to the end of the lines list.
+Area is closed if needed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>closed</strong> &#8211;
+boolean telling if the hole was closed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.add_sline">
+<tt class="descname">add_sline</tt><big>(</big><em>signline</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.add_sline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.add_sline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds signline to the area definition.</p>
+<p>SignLine is added to the end of the lines list.
+Area is closed if needed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.allpoints"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns a list of all points under this area; includes arc centers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.calc_center">
+<tt class="descname">calc_center</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.calc_center"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.calc_center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets self.center the area centroid Point.</p>
+<p>Attributes area and centroid are set by this method</p>
+<p>area (double): in-plane part area
+center (Point): the area centroid point</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the area.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.contains_point">
+<tt class="descname">contains_point</tt><big>(</big><em>point</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.contains_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.contains_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns bool telling if pt is inside the area.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pt</strong> (<em>Point</em>) &#8211; point we are checking</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>contains</strong> &#8211;
+True if in this area False if not</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.get_maxlength">
+<tt class="descname">get_maxlength</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.get_maxlength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.get_maxlength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns max distance between points in an area.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the area name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.get_patch">
+<tt class="descname">get_patch</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.get_patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.get_patch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a patch of the area.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">holepoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.holepoints"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns a list of all points in this area&#8217;s holes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.line_from_startpt">
+<tt class="descname">line_from_startpt</tt><big>(</big><em>pt</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.line_from_startpt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.line_from_startpt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the signline in the area that start at the passed pt.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pt</strong> (<em>Point</em>) &#8211; the start point of the line one wants</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None or line (SignLine or SignArc): Returns None if no line is found
+, otherwise the correct line or arc which starts with pt will be
+returned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.line_insert">
+<tt class="descname">line_insert</tt><big>(</big><em>lgiven</em>, <em>lnew</em>, <em>after=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.line_insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.line_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inserts line lnew before or after the given line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>lgiven</strong> (<em>SignLine or SignArc</em>) &#8211; the line we are inserting relative to</li>
+<li><strong>lnew</strong> (<em>Line or Arc</em>) &#8211; the new line we will insert</li>
+<li><strong>after</strong> (<em>bool</em>) &#8211; if True insert lnew after lgiven, false insert before</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True if succeeded, False if failed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">lines</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.lines"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns a list of all Line and Arc under this area.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.plot">
+<tt class="descname">plot</tt><big>(</big><em>ax</em>, <em>label=True</em>, <em>fill=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the area on a Matplotlib axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ax</strong> (<em>Matplotlib axis</em>) &#8211; Matplotlib axis</li>
+<li><strong>label</strong> (<em>bool</em>) &#8211; if True, label area</li>
+<li><strong>fill</strong> (<em>bool</em>) &#8211; if True, fill in area</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Area.points">
+<tt class="descname">points</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all points under this area; excludes arc centers.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.set_child_ccxtypes">
+<tt class="descname">set_child_ccxtypes</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.set_child_ccxtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.set_child_ccxtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns the child element ccx types.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.set_etype">
+<tt class="descname">set_etype</tt><big>(</big><em>etype</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.set_etype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.set_etype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the area etype.</p>
+<p>Sets the ccxtype on elements if they have been assigned to this area.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>etype</strong> (<em>str</em>) &#8211; element type
+&#8216;plstress&#8217; plane stress
+&#8216;plstrain&#8217;: plane strain
+&#8216;axisym&#8217;: axisymmetric</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">signlines</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.signlines"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns a list of all SignLine and SignArc under this area.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Area.update">
+<tt class="descname">update</tt><big>(</big><em>line_list</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Area.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Area.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the area&#8217;s signlines list to the passed list.</p>
+<p>The area&#8217;s signlines list is replaced with the passed list.
+If the area is cosed, self.close() will be called.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line_list</strong> (<em>list</em>) &#8211; list of SignLine and SignArc items</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycalculix.geometry.Line">
+<em class="property">class </em><tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">Line</tt><big>(</big><em>p1</em>, <em>p2</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>Stores a line from points p1 to p2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>p1</strong> (<em>Point</em>) &#8211; first point</li>
+<li><strong>p2</strong> (<em>Point</em>) &#8211; second point</li>
+<li><strong>sign</strong> (<em>int</em>) &#8211; <p>1 or -1, defines direction of line</p>
+<ul>
+<li>+1: p1 -&gt; p2</li>
+<li>-1: p2 -&gt; p1</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.geometry.Line.points">
+<tt class="descname">points</tt><a class="headerlink" href="#pycalculix.geometry.Line.points" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Point</em></p>
+<p>list of the line&#8217;s points [p1,p2]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Line.allpoints">
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.allpoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.allpoints" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of point</em></p>
+<p>same as points</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Line.midpt">
+<tt class="descname">midpt</tt><a class="headerlink" href="#pycalculix.geometry.Line.midpt" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Point</em></p>
+<p>a mid-point between p1 and p2</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Line.nodes">
+<tt class="descname">nodes</tt><a class="headerlink" href="#pycalculix.geometry.Line.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Node</em></p>
+<p>a list of meshed nodes on the line</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Line.faces">
+<tt class="descname">faces</tt><a class="headerlink" href="#pycalculix.geometry.Line.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list of Face</em></p>
+<p>a list of meshed faces on the line</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.__eq__">
+<tt class="descname">__eq__</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns bool telling if self == other.</p>
+<p>Returns True if the lines are the same type, and contain the same
+list of points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.__hash__">
+<tt class="descname">__hash__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the hash of the item to the id number.</p>
+<p>This allows one to make sets of these items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string listing object type, id number, and points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.add_signline">
+<tt class="descname">add_signline</tt><big>(</big><em>signline</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.add_signline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.add_signline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a signline to self.signlines.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">allpoints</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.allpoints"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns all line defining points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.arc_tang_intersection">
+<tt class="descname">arc_tang_intersection</tt><big>(</big><em>pt</em>, <em>mag</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.arc_tang_intersection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.arc_tang_intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an intersection point on this line of an arc centered at pt</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pt</strong> (<em>Point</em>) &#8211; arc center point</li>
+<li><strong>mag</strong> (<em>float</em>) &#8211; passed radius distance from the arc center to the line</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p><strong>newpt</strong> &#8211;</p>
+<p>Point: the intersection point
+None: returns None if no intersection point exists</p>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Point or None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Line.areas">
+<tt class="descname">areas</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.areas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.areas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all areas that signlines use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.coincident">
+<tt class="descname">coincident</tt><big>(</big><em>pt</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.coincident"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.coincident" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if pt is on the line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pt</strong> (<em>Point</em>) &#8211; input point to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if pt on line or False if not</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.get_abc">
+<tt class="descname">get_abc</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.get_abc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.get_abc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of abc terms for a line definition.</p>
+<p>ax + by + c = 0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[a, b, c]: list of the above line terms</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the line name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.get_perp_vec">
+<tt class="descname">get_perp_vec</tt><big>(</big><em>pt=None</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.get_perp_vec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.get_perp_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns vector perpendicular to current line.</p>
+<p>Vector is created by rotating the current line ccw 90 degrees
+around the start point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pt</strong> (<em>Point</em>) &#8211; defaults to None, unused for Line, used for Arc</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>lvect</strong> &#8211;
+vector that is perpendiculat to the current line</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Point</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.intersects">
+<tt class="descname">intersects</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.intersects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.intersects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if other line intersects this line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Line or Arc</em>) &#8211; other line to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Point or None:
+Point: intersection point
+None: None if lines don&#8217;t intersect</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.length">
+<tt class="descname">length</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length of the line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.mid">
+<tt class="descname">mid</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.mid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.mid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Caclulates and returns a midpoint between start and end points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.offset">
+<tt class="descname">offset</tt><big>(</big><em>dist</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.offset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new line offset from the dirrent line by value dist.</p>
+<p>Right hand rule is followed assuming x is the origina line.
+Z points out of page.
+Y is the direction of line offset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dist</strong> (<em>float</em>) &#8211; distance to offset the new line by</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>tmpline</strong> &#8211;
+new Line which is offset from self by dist</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Line</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.pt">
+<tt class="descname">pt</tt><big>(</big><em>ind</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.pt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the start or end point of the line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ind</strong> (<em>int</em>) &#8211; index of the point we want, 0=start, 1=end</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">requested Point</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Point</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.save_to_points">
+<tt class="descname">save_to_points</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.save_to_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.save_to_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>This stores this line in the line&#8217;s child points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.set_ediv">
+<tt class="descname">set_ediv</tt><big>(</big><em>ediv</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.set_ediv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.set_ediv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the number of element divisions on the line when meshing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ediv</strong> (<em>int</em>) &#8211; number of required elements on this line</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.set_pt">
+<tt class="descname">set_pt</tt><big>(</big><em>ind</em>, <em>pt</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.set_pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.set_pt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the line&#8217;s point at ind to the new pt.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ind</strong> (<em>int</em>) &#8211; index of the point we&#8217;re updating, 0=start, 1=end</li>
+<li><strong>pt</strong> (<em>Point</em>) &#8211; new point we are assigning to Line</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.signed_copy">
+<tt class="descname">signed_copy</tt><big>(</big><em>sign</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.signed_copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.signed_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a SignLine copy of this Line with the passed sign.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Line.touches">
+<tt class="descname">touches</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Line.touches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Line.touches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if a line is connected to a passed line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Line or Arc</em>) &#8211; passed other line</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">beginning or end point connect to other line
+False: lines are not connected</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">True</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycalculix.geometry.Lineloop">
+<em class="property">class </em><tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">Lineloop</tt><big>(</big><em>items</em>, <em>hole_bool=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Lineloop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Lineloop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.list</span></tt></p>
+<p>Makes a line loop, which stores multiple Line/Arc or SignLine/SignArc.</p>
+<dl class="attribute">
+<dt id="pycalculix.geometry.Lineloop.closed">
+<tt class="descname">closed</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#Lineloop.closed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Lineloop.closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if Closed, False if not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Lineloop.signed_area">
+<tt class="descname">signed_area</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Lineloop.signed_area"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Lineloop.signed_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the loop&#8217;s signed area.</p>
+<p>Returns 0 if not closed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycalculix.geometry.Point">
+<em class="property">class </em><tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">Point</tt><big>(</big><em>x</em>, <em>y</em>, <em>z=0</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>Makes a point or vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<em>float</em>) &#8211; vertical coordinate of point</li>
+<li><strong>y</strong> (<em>float</em>) &#8211; horizontal coordinate of point</li>
+<li><strong>z</strong> (<em>float</em>) &#8211; in-page coordinate of point, defaults to zero</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.geometry.Point.x">
+<tt class="descname">x</tt><a class="headerlink" href="#pycalculix.geometry.Point.x" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em></p>
+<p>vertical coordinate of point</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Point.y">
+<tt class="descname">y</tt><a class="headerlink" href="#pycalculix.geometry.Point.y" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em></p>
+<p>horizontal coordinate of point</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.Point.z">
+<tt class="descname">z</tt><a class="headerlink" href="#pycalculix.geometry.Point.z" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em></p>
+<p>in-page coordinate of point, defaults to zero
+nodes (Node): a list of nodes in a mesh at this point.
+List length is 1.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.__add__">
+<tt class="descname">__add__</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.__add__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns new point = self + other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Point</em>) &#8211; passed point</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Point = self + other (new point, does not modify self)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.__eq__">
+<tt class="descname">__eq__</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks x and y equality to other point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Point</em>) &#8211; passed point</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.__hash__">
+<tt class="descname">__hash__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the hash of the item to the id number.</p>
+<p>This allows one to make sets of these items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.__mul__">
+<tt class="descname">__mul__</tt><big>(</big><em>factor</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.__mul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.__mul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns new point = self*factor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>factor</strong> (<em>float</em>) &#8211; factor to multiply the Point by</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Point = self*factor (new point, does not modify self)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.__str__">
+<tt class="descname">__str__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string listing object type, id number, and coordinates</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.__sub__">
+<tt class="descname">__sub__</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.__sub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.__sub__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns new point = self - other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Point</em>) &#8211; passed point</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Point = self - other (new point, does not modify self)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.__truediv__">
+<tt class="descname">__truediv__</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.__truediv__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.__truediv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns new point = self/other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>float or Point</em>) &#8211; item we&#8217;re dividing by</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Point or factor. Does not modify self.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.ang_bet_deg">
+<tt class="descname">ang_bet_deg</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.ang_bet_deg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.ang_bet_deg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns angle between self and other vector in degrees.</p>
+<p>Assumes vectors start at 0,0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Point</em>) &#8211; passed vector</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>angle</strong> &#8211;
+degrees between self vector and other vector</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.ang_bet_rad">
+<tt class="descname">ang_bet_rad</tt><big>(</big><em>other</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.ang_bet_rad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.ang_bet_rad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns angle between self and other vector in radians.</p>
+<p>Assumes vectors start at 0,0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<em>Point</em>) &#8211; passed vector</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>angle</strong> &#8211;
+radians between self vector and other vector</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.ang_deg">
+<tt class="descname">ang_deg</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.ang_deg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.ang_deg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns angle in degrees, assume point is vector from 0,0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.ang_rad">
+<tt class="descname">ang_rad</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.ang_rad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.ang_rad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns angle in radians, assume point is vector from 0,0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.axrad">
+<tt class="descname">axrad</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.axrad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.axrad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of (ax, rad) for plotting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns item name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.label">
+<tt class="descname">label</tt><big>(</big><em>ax</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labels the point on a Matplotlib axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ax</strong> (<em>Matplotlib Axis</em>) &#8211; Matplotlib Axis</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.length">
+<tt class="descname">length</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length of this point or vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.make_unit">
+<tt class="descname">make_unit</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.make_unit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.make_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifies self vector to make it a unit vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.plot">
+<tt class="descname">plot</tt><big>(</big><em>ax</em>, <em>label=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the point on the passed matplotlib axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ax</strong> (<em>Matplotlib axis</em>) &#8211; plate to plot the point</li>
+<li><strong>pnum</strong> (<em>bool</em>) &#8211; True turns on point labeling</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.rot_ccw_deg">
+<tt class="descname">rot_ccw_deg</tt><big>(</big><em>ang</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.rot_ccw_deg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.rot_ccw_deg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotates the current vector by ccw degrees about 0,0. Returns self.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ang</strong> (<em>float</em>) &#8211; angle or rotation in degrees, counter-clockwise (ccw)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.Point.save_line">
+<tt class="descname">save_line</tt><big>(</big><em>line</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#Point.save_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.Point.save_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves the line in th epoint.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycalculix.geometry.SignArc">
+<em class="property">class </em><tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">SignArc</tt><big>(</big><em>parent_line</em>, <em>sign</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycalculix.geometry.Arc" title="pycalculix.geometry.Arc"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.geometry.Arc</span></tt></a>, <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>This class is for a signed line.</p>
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignArc.actr">
+<tt class="descname">actr</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.actr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.actr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the arc center.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignArc.concavity">
+<tt class="descname">concavity</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.concavity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.concavity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the arc&#8217;s concavity &#8216;concave&#8217; or &#8216;convex&#8217;</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignArc.edge">
+<tt class="descname">edge</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a bool saying if this is an edge line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the line name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.get_verts_codes">
+<tt class="descname">get_verts_codes</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.get_verts_codes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.get_verts_codes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of [verts, codes] vertices for plotting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.label">
+<tt class="descname">label</tt><big>(</big><em>ax</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labels the arc on the matplotlib ax axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ax</strong> (<em>Matplotlib axis</em>) &#8211; Matplotlib axis</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignArc.midpt">
+<tt class="descname">midpt</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.midpt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.midpt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mid point.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignArc.nodes">
+<tt class="descname">nodes</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the line nodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.plot">
+<tt class="descname">plot</tt><big>(</big><em>ax</em>, <em>label=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws and labels the arc onto the passed Matplotlib axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ax</strong> &#8211; Matplotlib axis</li>
+<li><strong>label</strong> (<em>bool</em>) &#8211; if True, label the arc</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignArc.points">
+<tt class="descname">points</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the arc&#8217;s points [pstart, pend]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.pt">
+<tt class="descname">pt</tt><big>(</big><em>ind</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.pt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the point at the start or end of the line.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignArc.radius">
+<tt class="descname">radius</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.radius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the arc radius.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.set_ediv">
+<tt class="descname">set_ediv</tt><big>(</big><em>ediv</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.set_ediv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.set_ediv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the element divisions onto the parent line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.set_parent">
+<tt class="descname">set_parent</tt><big>(</big><em>p</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.set_parent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.set_parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets area parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.set_pt">
+<tt class="descname">set_pt</tt><big>(</big><em>ind</em>, <em>point</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.set_pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.set_pt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the passed point to at the index location.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignArc.signed_copy">
+<tt class="descname">signed_copy</tt><big>(</big><em>sign</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignArc.signed_copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignArc.signed_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a SignArc copy of this arc.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycalculix.geometry.SignLine">
+<em class="property">class </em><tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">SignLine</tt><big>(</big><em>parent_line</em>, <em>sign</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycalculix.geometry.Line" title="pycalculix.geometry.Line"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.geometry.Line</span></tt></a>, <a class="reference internal" href="pycalculix.base_classes.html#pycalculix.base_classes.Idobj" title="pycalculix.base_classes.Idobj"><tt class="xref py py-class docutils literal"><span class="pre">pycalculix.base_classes.Idobj</span></tt></a></p>
+<p>Makes a signed line.</p>
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.line">
+<tt class="descname">line</tt><a class="headerlink" href="#pycalculix.geometry.SignLine.line" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Line</em></p>
+<p>parent line</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.sign">
+<tt class="descname">sign</tt><a class="headerlink" href="#pycalculix.geometry.SignLine.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em></p>
+<p>1 = positive, or -1 = negative</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.parent">
+<tt class="descname">parent</tt><a class="headerlink" href="#pycalculix.geometry.SignLine.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>None or Area</em></p>
+<p>parent Area, start out as None</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.faces">
+<tt class="descname">faces</tt><a class="headerlink" href="#pycalculix.geometry.SignLine.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of element faces</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.n1">
+<tt class="descname">n1</tt><a class="headerlink" href="#pycalculix.geometry.SignLine.n1" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>list of first order nodes on line</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.nodes">
+<tt class="descname">nodes</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em></p>
+<p>nodes on the line</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.edge">
+<tt class="descname">edge</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.edge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a bool saying if this is an edge line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.get_name">
+<tt class="descname">get_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SignLine name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.label">
+<tt class="descname">label</tt><big>(</big><em>ax</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Labels the line on the matplotlib ax axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ax</strong> (<em>Matplotlib axis</em>) &#8211; Matplotlib axis</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.midpt">
+<tt class="descname">midpt</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.midpt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.midpt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mid point.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">nodes</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.nodes"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Gets the line nodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.plot">
+<tt class="descname">plot</tt><big>(</big><em>ax</em>, <em>label=True</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws and labels the line onto the passed Matplotlib axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ax</strong> (<em>Matlotlib axis</em>) &#8211; Matplotlib axis</li>
+<li><strong>label</strong> (<em>bool</em>) &#8211; if True label the line</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.geometry.SignLine.points">
+<tt class="descname">points</tt><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of the line&#8217;s points [pstart, pend]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.pt">
+<tt class="descname">pt</tt><big>(</big><em>index</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.pt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the point at the start or end of the line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> (<em>int</em>) &#8211; 0 = start point, 1 = end point</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.set_ediv">
+<tt class="descname">set_ediv</tt><big>(</big><em>ediv</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.set_ediv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.set_ediv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the element divisions onto the parent line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.set_parent">
+<tt class="descname">set_parent</tt><big>(</big><em>p</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.set_parent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.set_parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets area parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.set_pt">
+<tt class="descname">set_pt</tt><big>(</big><em>index</em>, <em>point</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.set_pt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.set_pt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the start or end point of the line to a new point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>index</strong> (<em>int</em>) &#8211; 0 for start point, 1 for end point</li>
+<li><strong>point</strong> (<em>Point</em>) &#8211; the new point we are updating to</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.geometry.SignLine.signed_copy">
+<tt class="descname">signed_copy</tt><big>(</big><em>sign</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#SignLine.signed_copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.SignLine.signed_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a SignLine copy of this line.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycalculix.geometry.get_text_hv">
+<tt class="descclassname">pycalculix.geometry.</tt><tt class="descname">get_text_hv</tt><big>(</big><em>angle</em><big>)</big><a class="reference internal" href="_modules/pycalculix/geometry.html#get_text_hv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.geometry.get_text_hv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns (ha, va) text horizontal and vertical alignment for line label.</p>
+<p>This makes the line label text inside its area, assuming areas closed CW.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>angle</strong> (<em>float</em>) &#8211; line normal vector in degrees, between 180 and -180</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycalculix.feamodel.html"
+                        title="previous chapter">pycalculix.feamodel module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pycalculix.loads.html"
+                        title="next chapter">pycalculix.loads module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pycalculix.geometry.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.loads.html" title="pycalculix.loads module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.feamodel.html" title="pycalculix.feamodel module"
+             >previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" >pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Justin Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

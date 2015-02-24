@@ -1,0 +1,527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pycalculix.selector module &mdash; pycalculix 0.9.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.9.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pycalculix 0.9.3 documentation" href="index.html" />
+    <link rel="up" title="pycalculix package" href="pycalculix.html" />
+    <link rel="prev" title="pycalculix.results_file module" href="pycalculix.results_file.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.results_file.html" title="pycalculix.results_file module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" accesskey="U">pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pycalculix.selector">
+<span id="pycalculix-selector-module"></span><h1>pycalculix.selector module<a class="headerlink" href="#module-pycalculix.selector" title="Permalink to this headline">¶</a></h1>
+<p>This module stores the Selector object</p>
+<p>Selector is used in FeaModel to store the model&#8217;s selected set.</p>
+<dl class="class">
+<dt id="pycalculix.selector.Selector">
+<em class="property">class </em><tt class="descclassname">pycalculix.selector.</tt><tt class="descname">Selector</tt><big>(</big><em>feamodel</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Makes a selector which stores the selected items in the FeaModel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>feamodel</strong> (<em>FeaModel</em>) &#8211; the parent FeaModel object</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__fea">
+<tt class="descname">__fea</tt><a class="headerlink" href="#pycalculix.selector.Selector.__fea" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>FeaModel</em></p>
+<p>the parent FeaModel</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__all">
+<tt class="descname">__all</tt><a class="headerlink" href="#pycalculix.selector.Selector.__all" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em></p>
+<p>If everything is selected all=True</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.parts">
+<tt class="descname">parts</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.parts" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>currently selected parts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.areas">
+<tt class="descname">areas</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.areas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.areas" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>currently selected areas</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.lines">
+<tt class="descname">lines</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.lines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>currently selected signed lines or arcs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.points">
+<tt class="descname">points</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.points" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>currently selected points</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.elements">
+<tt class="descname">elements</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.elements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.elements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>currently selected elements</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.faces">
+<tt class="descname">faces</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.faces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.faces" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>currently selected faces</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.nodes">
+<tt class="descname">nodes</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>currently selected nodes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__parts">
+<tt class="descname">__parts</tt><a class="headerlink" href="#pycalculix.selector.Selector.__parts" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>internal storage set of parts</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__areas">
+<tt class="descname">__areas</tt><a class="headerlink" href="#pycalculix.selector.Selector.__areas" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>internal storage set of areas</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__slines">
+<tt class="descname">__slines</tt><a class="headerlink" href="#pycalculix.selector.Selector.__slines" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>internal storage set of signed lines and arcs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__points">
+<tt class="descname">__points</tt><a class="headerlink" href="#pycalculix.selector.Selector.__points" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>internal storage set of points</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__elements">
+<tt class="descname">__elements</tt><a class="headerlink" href="#pycalculix.selector.Selector.__elements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>internal storage set of elements</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__faces">
+<tt class="descname">__faces</tt><a class="headerlink" href="#pycalculix.selector.Selector.__faces" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>internal storage set of faces</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pycalculix.selector.Selector.__nodes">
+<tt class="descname">__nodes</tt><a class="headerlink" href="#pycalculix.selector.Selector.__nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>set</em></p>
+<p>internal storage set of nodes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.allsel_under">
+<tt class="descname">allsel_under</tt><big>(</big><em>sel_type</em>, <em>full=True</em>, <em>byfaces=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.allsel_under"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.allsel_under" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects all progeny under current sel_type items.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sel_type</strong> (<em>str</em>) &#8211; <p>the item type to select under</p>
+<ul>
+<li>&#8216;parts&#8217;</li>
+<li>&#8216;areas&#8217;</li>
+<li>&#8216;lines&#8217;</li>
+<li>&#8216;points&#8217; (needs full=True)</li>
+<li>&#8216;elements&#8217;</li>
+<li>&#8216;faces&#8217;</li>
+</ul>
+</li>
+<li><strong>full</strong> (<em>bool</em>) &#8211; <p>if False selects under one branch</p>
+<ul>
+<li>solid modeling branch: area-&gt;line-&gt;keypoints-&gt;points</li>
+<li>mesh branch: elements-&gt;faces-&gt;nodes</li>
+</ul>
+<p>Cross branch connections:
+- faces are under lines
+- elements are under areas
+- nodes are under lines and points</p>
+<p>If True, selects all items connected to sub items:
+- Parts:</p>
+<blockquote>
+<div><ul>
+<li>Areas</li>
+<li>Elements, element faces + element nodes</li>
+<li>Lines, line points</li>
+</ul>
+</div></blockquote>
+<ul>
+<li>Areas:<blockquote>
+<div><ul>
+<li>Elements, element faces + element nodes</li>
+<li>Lines, line points</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>-Lines:</p>
+<blockquote>
+<div><ul>
+<li>Faces, nodes</li>
+<li>byfaces=True: elements above faces</li>
+<li>byfaces=False: elements above line nodes selected</li>
+</ul>
+</div></blockquote>
+<p>-Points:</p>
+<blockquote>
+<div><ul>
+<li>Nodes</li>
+<li>byfaces=True: no elements selected</li>
+<li>byfaces=False: elements above point nodes selected</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>byfaces</strong> (<em>bool</em>) &#8211; <p>If true, the child elements will only be selected
+if a parent face was selected. If false just an element node
+needs to be selected to select the element.</p>
+<p>-This is only applicable when sel_type == &#8216;lines&#8217;</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.allselect">
+<tt class="descname">allselect</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.allselect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.allselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects all items.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">areas</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.areas"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns selected areas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.deselect">
+<tt class="descname">deselect</tt><big>(</big><em>items</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.deselect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.deselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the passed item or items from the selection set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.deselect_all">
+<tt class="descname">deselect_all</tt><big>(</big><em>sel_type</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.deselect_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.deselect_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deselects all items of sel_type.</p>
+<p>All items currently selected items are removed from the selection set
+before the all set is selected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sel_type</strong> (<em>str</em>) &#8211; <p>the items to select</p>
+<ul class="simple">
+<li>&#8216;all&#8217;</li>
+<li>&#8216;parts&#8217;</li>
+<li>&#8216;areas&#8217;</li>
+<li>&#8216;lines&#8217;</li>
+<li>&#8216;points&#8217;</li>
+<li>&#8216;elements&#8217;</li>
+<li>&#8216;faces&#8217;</li>
+<li>&#8216;nodes&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">elements</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.elements"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns selected elements.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">faces</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.faces"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns selected faces.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">lines</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.lines"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns selected signed lines or arcs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">nodes</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.nodes"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns selected nodes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">parts</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.parts"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns selected parts.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<tt class="descname">points</tt><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.points"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Returns selected points.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.print_summary">
+<tt class="descname">print_summary</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.print_summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.print_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a summary of the number so items selected in each sel_type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.select">
+<tt class="descname">select</tt><big>(</big><em>items=''</em>, <em>also=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.select"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects an item or a list of items.</p>
+<dl class="docutils">
+<dt>Agrs:</dt>
+<dd><p class="first">items (str or item or list): item(s) to select
+also (bool): whether to add the items to the current selection set</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>True: add the items to the current selection set</li>
+<li>False: only select the passed items</li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.select_above">
+<tt class="descname">select_above</tt><big>(</big><em>inclusive=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.select_above"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.select_above" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects parents above currently selected items.</p>
+<p>Only one set must be selected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.select_above_all">
+<tt class="descname">select_above_all</tt><big>(</big><em>sel_type</em>, <em>inclusive=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.select_above_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.select_above_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects parents above all currently selected items of sel_type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sel_type</strong> (<em>str</em>) &#8211; <p>type to select items above</p>
+<ul>
+<li>&#8216;areas&#8217;: selects parts</li>
+<li>&#8216;lines&#8217;: selects areas</li>
+<li>&#8216;points&#8217;: selects signlines or signarcs</li>
+<li>&#8216;faces&#8217;: selects elements</li>
+<li>&#8216;nodes&#8217;: selects faces</li>
+</ul>
+</li>
+<li><strong>inclusive</strong> (<em>bool</em>) &#8211; <p>if True, all child entities must be selected for
+the parent to be selected. If false all parents connected to
+the child are selected. Exampes:</p>
+<ul>
+<li>&#8216;areas&#8217; + True: all part areas must be selected to select part</li>
+<li>&#8216;areas&#8217; + False: parts with selected areas in them are selected</li>
+<li>&#8216;lines&#8217; + True: all lines must be selected to select area</li>
+<li>&#8216;lines&#8217; + False: areas with selected lines in them are selected</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.select_all">
+<tt class="descname">select_all</tt><big>(</big><em>sel_type='all'</em>, <em>also=False</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.select_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.select_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects all items of sel_type from the full feamodel.</p>
+<p>All items currently selected items are removed from the selection set
+before the all set is selected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sel_type</strong> (<em>str</em>) &#8211; <p>the items to select</p>
+<ul>
+<li>&#8216;all&#8217;</li>
+<li>&#8216;parts&#8217;</li>
+<li>&#8216;areas&#8217;</li>
+<li>&#8216;lines&#8217;</li>
+<li>&#8216;points&#8217;</li>
+<li>&#8216;elements&#8217;</li>
+<li>&#8216;faces&#8217;</li>
+<li>&#8216;nodes&#8217;</li>
+</ul>
+</li>
+<li><strong>also</strong> (<em>bool</em>) &#8211; if False, empties the selection set before selecting
+all items, if True adds new items to the current set</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.select_below">
+<tt class="descname">select_below</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.select_below"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.select_below" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects children below currently selected items.</p>
+<p>Only one set must be selected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.select_below_all">
+<tt class="descname">select_below_all</tt><big>(</big><em>sel_type</em><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.select_below_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.select_below_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects children below all currently selected items of sel_type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sel_type</strong> (<em>str</em>) &#8211; <p>type to select items below</p>
+<ul class="simple">
+<li>&#8216;parts&#8217;: selects areas</li>
+<li>&#8216;areas&#8217;: selects lines (type SignLine and SignArc)</li>
+<li>&#8216;lines&#8217;: selects points</li>
+<li>&#8216;elements&#8217;: selects faces</li>
+<li>&#8216;faces&#8217;: selects nodes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycalculix.selector.Selector.select_none">
+<tt class="descname">select_none</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pycalculix/selector.html#Selector.select_none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycalculix.selector.Selector.select_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Empties out the selection object.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pycalculix.results_file.html"
+                        title="previous chapter">pycalculix.results_file module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pycalculix.selector.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pycalculix.results_file.html" title="pycalculix.results_file module"
+             >previous</a> |</li>
+        <li><a href="index.html">pycalculix 0.9.3 documentation</a> &raquo;</li>
+          <li><a href="pycalculix.html" >pycalculix package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Justin Black.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
